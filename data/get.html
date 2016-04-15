@@ -22,7 +22,7 @@
       
       
       
-      ref.on("value", function(snapshot) {
+      firebase.on("value", function(snapshot) {
         document.getElementById("data").innerHTML = snapshot.val();
       }, function (errorObject) {
         document.getElementById("data").innerHTML = "The read failed: " + errorObject.code;
