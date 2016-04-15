@@ -8,9 +8,19 @@
   <body>
     <script>
     <!--
+    function ToObject(arr) {
+      var rv = {};
+      for (var i = 0; i < arr.length; ++i)
+        rv[i] = arr[i];
+      return rv;
+    }
+    
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
       
+      console.log(ToObject(params));
+      
+      /*
       //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.child("data").set({params});
@@ -19,7 +29,7 @@
         console.log(snapshot.val().data + "," + snapshot.val().data[0] + "," + snapshot.val().data[1] + "," + snapshot.val().data[2]);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
-      });
+      });*/
       
     }
     
