@@ -14,16 +14,23 @@
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.on("value", function(snapshot) {
         var data = snapshot.val().data;
+        
+        console.log("value: " + data.aaa);
+        
+        
+        /*
         params.forEach(function(param){
           var name = param.split("=")[0];
           //var value = param.split("=")[1];
           
+          console.log("name: " + name);
+          
+          //console.log("name: " + eval(data + "." + name));
           
           
-          console.log("name: " + eval(data + "." + name));
-          
-          
-        });
+        });*/
+        
+        
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
