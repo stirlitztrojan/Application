@@ -9,23 +9,24 @@
     <div id="data"></div>
     <script>
     <!--
-    if(window.location.href.search("?") == -1) return;
-    var data = {};
-    var params = window.location.href.split("?")[1].split(";");
-    if(params.length >= 1){
-      var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.on("value", function(snapshot) {
-        var data = snapshot.val().data;
-        var text = "";
-        params.forEach(function(param){
-          var name = param;
-          text += data[name] + ",";
+    if(window.location.href.search("?") != -1){
+      var data = {};
+      var params = window.location.href.split("?")[1].split(";");
+      if(params.length >= 1){
+        var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+        firebase.on("value", function(snapshot) {
+          var data = snapshot.val().data;
+          var text = "";
+          params.forEach(function(param){
+            var name = param;
+            text += data[name] + ",";
+          });
+          text = text.substr(0, text.length-1); // Removing last ','
+          document.getElementById("data").innerHTML = text;
+        }, function (errorObject) {
+          document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
         });
-        text = text.substr(0, text.length-1); // Removing last ','
-        document.getElementById("data").innerHTML = text;
-      }, function (errorObject) {
-        document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
-      });
+      }
     }
     -->
     </script>
