@@ -10,7 +10,9 @@
     <!--
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
-      var data = eval("{data:"+params+"}");
+      var data = {
+        data:params
+      };
       
       console.log(data);
       
@@ -23,11 +25,9 @@
         console.log(snapshot.val().name + ", " + snapshot.val().value);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
-      });
-    }else{
-      document.getElementById("data").innerHTML = "null";
-    }*/
-    
+      });*/
+      
+    }
     
     -->
     </script>
