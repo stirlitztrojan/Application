@@ -14,8 +14,12 @@
       params.forEach(function(param){
         var name = param.split("=")[0];
         var value = param.split("=")[1];
+        console.log(name + "=" + value);
+        
         data = Object.assign(data, name + "=" + value);
         console.log(data);
+        
+        console.log("-----");
       });
       
       data = {data:data};
