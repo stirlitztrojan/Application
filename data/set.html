@@ -14,7 +14,7 @@
       params.forEach(function(param){
         var name = param.split("=")[0];
         var value = param.split("=")[1];
-        var both = eval("{" + name + ":" + value + "}");
+        var both = eval("data = {" + name + ":" + value + "}");
         console.log(both);
       });
       
