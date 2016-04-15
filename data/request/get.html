@@ -7,11 +7,10 @@
   <body>
     <script>
     <!--
-    var data = 
-    
-    document.write("");
-    
-    
+    var params = window.location.href.split('?')[1];
+    params.forEach(function(param){
+      document.writeln(param);
+    });
     -->
     </script>
   </body>
