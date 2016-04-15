@@ -7,7 +7,35 @@
   </head>
   <body>
     <script>
-    
+    <!--
+    var data = {};
+    var params = window.location.href.split("?")[1].split(";");
+    if(params.length >= 1){
+      params.forEach(function(param){
+        var name = param.split("=")[0];
+        var value = param.split("=")[1];
+        data = Object.assign(data, param);
+      });
+      
+      
+      console.log(data);
+      
+      /*
+      
+      var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+      firebase.child("data").set(data);
+      
+      firebase.on("data", function(snapshot) {
+        console.log(snapshot.val().name + ", " + snapshot.val().value);
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });*/
+      
+      
+    }else{
+      document.getElementById("data").innerHTML = "null";
+    }
+    -->
     </script>
   </body>
 </html>
