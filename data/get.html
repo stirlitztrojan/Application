@@ -3,18 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <title>StirlitzTrojan Application</title>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   </head>
   <body>
     <script>
     <!--
-    
     
     var params = window.location.href.split("?")[1].split(";");
     params.forEach(function(param){
       document.writeln(param+"<br/>");
     });
     
-    
+    var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+    myFirebaseRef.child("location/city").on("value", function(snapshot) {
+      alert(snapshot.val());  // Alerts "San Francisco"
+    });
     -->
     </script>
   </body>
