@@ -18,9 +18,9 @@
         var text = "";
         params.forEach(function(param){
           var name = param;
-          text += name + ",";
+          text += data[name] + ",";
         });
-        text = text.substring(0, text.length - 1); // Removing last ','
+        text = text.substr(0, text.length-1); // Removing last ','
         document.getElementById("data").innerHTML = text;
       }, function (errorObject) {
         document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
