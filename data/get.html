@@ -6,36 +6,27 @@
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   </head>
   <body>
+    <div id="data"></div>
     <script>
     <!--
     var data = {};
     var params = window.location.href.split("?")[1].split(";");
+    
+    console.log(params);
+    
+    /*
     if(params.length >= 1){
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.on("value", function(snapshot) {
         var data = snapshot.val().data;
-        
-        console.log("test1: " + data.aaa);
-        console.log("test2: " + data["aaa"]);
-        
-        
-        /*
         params.forEach(function(param){
-          var name = param.split("=")[0];
-          //var value = param.split("=")[1];
-          
-          console.log("name: " + name);
-          
-          //console.log("name: " + eval(data + "." + name));
-          
-          
-        });*/
-        
-        
+          //var name = param.search() == -1 ? param.split("=")[0] : param;
+          document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
+        });
       }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
+        document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
       });
-    }
+    }*/
     -->
     </script>
   </body>
