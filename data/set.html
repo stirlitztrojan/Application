@@ -8,21 +8,23 @@
   <body>
     <script>
     <!--
-    var data = {};
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
+      
+      
+      
+      var data = {data:params};
+      
+      /*
       params.forEach(function(param){
         var name = param.split("=")[0];
         var value = param.split("=")[1];
-        console.log(name + "=" + value);
+        var both = name + "=" + value;
         
-        data = Object.assign(name + "=" + value, data);
-        console.log(data);
+        console.log(data["data"] = both);
         
         console.log("-----");
-      });
-      
-      data = {data:data};
+      });*/
       
       console.log(data);
       
