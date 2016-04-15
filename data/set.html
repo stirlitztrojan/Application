@@ -16,7 +16,7 @@
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.child("data").set({data});
       //get
-      firebase.on("data", function(snapshot) {
+      firebase.on("value", function(snapshot) {
         console.log(snapshot.val().name + ", " + snapshot.val().value);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
