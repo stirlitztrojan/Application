@@ -9,6 +9,7 @@
     <div id="data"></div>
     <script>
     <!--
+    if(window.location.href.search("?") == -1) return;
     var data = {};
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
