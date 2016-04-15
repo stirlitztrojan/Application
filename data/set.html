@@ -10,36 +10,17 @@
     <!--
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
-      
-      
-      
       var data = {data:params};
       
-      /*
-      params.forEach(function(param){
-        var name = param.split("=")[0];
-        var value = param.split("=")[1];
-        var both = name + "=" + value;
-        
-        console.log(data["data"] = both);
-        
-        console.log("-----");
-      });*/
-      
-      console.log(data);
-      
-      /*
-      
+      //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.child("data").set(data);
-      
+      //get
       firebase.on("data", function(snapshot) {
         console.log(snapshot.val().name + ", " + snapshot.val().value);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
-      });*/
-      
-      
+      });
     }else{
       document.getElementById("data").innerHTML = "null";
     }
