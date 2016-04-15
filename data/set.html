@@ -14,7 +14,7 @@
       params.forEach(function(param){
         var name = param.split("=")[0];
         var value = param.split("=")[1];
-        data = Object.assign(data + "=" + value);
+        data = Object.assign(data, name + "=" + value);
         console.log(data);
       });
       
