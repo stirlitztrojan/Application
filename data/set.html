@@ -12,9 +12,12 @@
     if(params.length >= 1){
       var data = {data:params};
       
+      console.log(data);
+      
+      /*
       //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.child("data").set({data});
+      firebase.child("data").set(data);
       //get
       firebase.on("value", function(snapshot) {
         console.log(snapshot.val().name + ", " + snapshot.val().value);
@@ -23,7 +26,9 @@
       });
     }else{
       document.getElementById("data").innerHTML = "null";
-    }
+    }*/
+    
+    
     -->
     </script>
   </body>
