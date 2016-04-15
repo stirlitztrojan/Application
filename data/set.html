@@ -10,11 +10,10 @@
     <!--
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
-      var data = {data:params};
       
       //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.child("data").set(data);
+      firebase.child("data").set({params});
       //get
       firebase.on("value", function(snapshot) {
         console.log(snapshot.val().data + "," + snapshot.val().data[0] + "," + snapshot.val().data[1] + "," + snapshot.val().data[2]);
