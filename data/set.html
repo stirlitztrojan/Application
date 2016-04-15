@@ -8,17 +8,18 @@
   <body>
     <script>
     <!--
-    if(window.location.href.search("?") == -1) return;
-    var data = {};
-    var params = window.location.href.split("?")[1].split(";");
-    if(params.length >= 1){
-      params.forEach(function(param){
-        var name = param.split("=")[0];
-        var value = param.split("=")[1];
-        data[name] = value;
-      });
-      var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.child("data").update(data);
+    if(window.location.href.search("?") != -1){
+      var data = {};
+      var params = window.location.href.split("?")[1].split(";");
+      if(params.length >= 1){
+        params.forEach(function(param){
+          var name = param.split("=")[0];
+          var value = param.split("=")[1];
+          data[name] = value;
+        });
+        var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+        firebase.child("data").update(data);
+      }
     }
     -->
     </script>
