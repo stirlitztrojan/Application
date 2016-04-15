@@ -17,7 +17,7 @@
         data[name] = value;
       });
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.child("data").set(data);
+      firebase.child("data").update(data);
     }
     -->
     </script>
