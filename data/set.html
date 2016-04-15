@@ -16,24 +16,16 @@
         var name = param.split("=")[0];
         var value = param.split("=")[1];
         data[name] = value;
-        //var both = eval("data = {" + name + ":" + value + "}");
-        //console.log(both);
       });
-      
-      console.log(data);
-      
-      //console.log(ToObject(params));
-      
-      /*
       //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.child("data").set({params});
+      firebase.child("data").set(data);
       //get
       firebase.on("value", function(snapshot) {
         console.log(snapshot.val().data + "," + snapshot.val().data[0] + "," + snapshot.val().data[1] + "," + snapshot.val().data[2]);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
-      });*/
+      });
       
     }
     
