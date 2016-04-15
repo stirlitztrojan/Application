@@ -8,14 +8,21 @@
   <body>
     <script>
     <!--
+    var values = {};
     var data = {};
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
       params.forEach(function(param){
+        console.log("-----");
         var name = param.split("=")[0];
         var value = param.split("=")[1];
-        data = Object.assign(data, param);
+        console.log(name + "=" + value);
+        values = Object.assign(values, param);
+        console.log(values);
       });
+      
+      console.log("=================");
+      data = Object.assign(data, value);
       
       
       console.log(data);
