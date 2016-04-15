@@ -17,7 +17,7 @@
       firebase.child("data").set(data);
       //get
       firebase.on("value", function(snapshot) {
-        console.log(snapshot.val().name + ", " + snapshot.val().value);
+        console.log(snapshot.val().data + "," + snapshot.val().data[0] + "," + snapshot.val().data[1] + "," + snapshot.val().data[2]);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
