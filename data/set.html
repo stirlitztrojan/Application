@@ -9,16 +9,18 @@
     <script>
     <!--
     
+    var data = {};
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
       params.forEach(function(param){
         var name = param.split("=")[0];
         var value = param.split("=")[1];
-        var both = eval("data = {" + name + ":" + value + "}");
-        console.log(both);
+        data[name] = value;
+        //var both = eval("data = {" + name + ":" + value + "}");
+        //console.log(both);
       });
       
-      
+      console.log(data);
       
       //console.log(ToObject(params));
       
