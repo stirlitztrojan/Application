@@ -11,22 +11,21 @@
     <!--
     var data = {};
     var params = window.location.href.split("?")[1].split(";");
-    
-    console.log(params);
-    
-    /*
     if(params.length >= 1){
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.on("value", function(snapshot) {
         var data = snapshot.val().data;
+        var text = "";
         params.forEach(function(param){
-          //var name = param.search() == -1 ? param.split("=")[0] : param;
-          document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
+          var name = param;
+          text += name + ",";
         });
+        text = text.substring(0, text.length - 1); // Removing last ','
+        document.getElementById("data").innerHTML = text;
       }, function (errorObject) {
         document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
       });
-    }*/
+    }
     -->
     </script>
   </body>
