@@ -10,13 +10,8 @@
     <!--
     var params = window.location.href.split("?")[1].split(";");
     if(params.length >= 1){
-      var data = {
-        data:params
-      };
+      var data = {data:params};
       
-      console.log(data);
-      
-      /*
       //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
       firebase.child("data").set(data);
@@ -25,7 +20,7 @@
         console.log(snapshot.val().name + ", " + snapshot.val().value);
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
-      });*/
+      });
       
     }
     
