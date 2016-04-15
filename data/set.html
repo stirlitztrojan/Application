@@ -14,7 +14,7 @@
       
       //set
       var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-      firebase.child("data").set(data);
+      firebase.child("data").set({data});
       //get
       firebase.on("data", function(snapshot) {
         console.log(snapshot.val().name + ", " + snapshot.val().value);
