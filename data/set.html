@@ -16,7 +16,7 @@
         var value = param.split("=")[1];
         console.log(name + "=" + value);
         
-        data = Object.assign(data, name + "=" + value);
+        data = Object.assign(name + "=" + value, data);
         console.log(data);
         
         console.log("-----");
