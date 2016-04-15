@@ -6,18 +6,36 @@
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   </head>
   <body>
+    <div id="data"></div>
     <script>
     <!--
-    
+    var values = [];
     var params = window.location.href.split("?")[1].split(";");
-    params.forEach(function(param){
-      document.writeln(param+"<br/>");
-    });
-    
-    var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-    myFirebaseRef.child("location/city").on("value", function(snapshot) {
-      alert(snapshot.val());  // Alerts "San Francisco"
-    });
+    if(params.length >= 1){
+      params.forEach(function(param){
+        var name = param.split("=")[0];
+        var value = param.split("=")[1];
+        values[name] = value;
+      });
+      
+      var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+      
+      
+      
+      ref.on("value", function(snapshot) {
+        document.getElementById("data").innerHTML = snapshot.val();
+      }, function (errorObject) {
+        document.getElementById("data").innerHTML = "The read failed: " + errorObject.code;
+      });
+      
+      /*
+      firebase.child("value").on("value", function(snapshot) {
+        document.getElementById("data").innerHTML = snapshot.val();
+      });*/
+      
+    }else{
+      document.getElementById("data").innerHTML = "null";
+    }
     -->
     </script>
   </body>
