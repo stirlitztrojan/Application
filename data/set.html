@@ -6,6 +6,7 @@
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   </head>
   <body>
+    <div id="data">0</div>
     <script>
     <!--
     if(window.location.href.indexOf("?") != -1){
@@ -18,7 +19,9 @@
           data[name] = value;
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        firebase.child("data").update(data);
+        firebase.child("data").update(data, function(e){
+          document.getElementById("data").innerHTML = "1";
+        });
       }
     }
     -->
