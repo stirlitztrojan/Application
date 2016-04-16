@@ -7,6 +7,7 @@
   </head>
   <body>
     <div id="data">0</div>
+    <div id="err"></div>
     <script>
     <!--
     if(window.location.href.indexOf("?") != -1){
@@ -20,6 +21,7 @@
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.child("data").update(data, function(e){
+          console.log(e);
           document.getElementById("data").innerHTML = "1";
         });
       }
