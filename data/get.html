@@ -16,7 +16,8 @@
       if(params.length >= 1){
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.on("value", function(snapshot) {
-          var data = snapshot.val().data;
+          var val = snapshot.val();
+          var data = params.contains("data") ? val.data : val.info;
           var text = "";
           params.forEach(function(param){
             var name = param;
