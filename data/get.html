@@ -24,8 +24,8 @@
           });
           text = text.substr(0, text.length-1); // Removing last ','
           document.getElementById("data").innerHTML = text;
-        }, function (errorObject) {
-          document.getElementById("err").innerHTML = "Exception: " + errorObject.code;
+        }, function (e) {
+          document.getElementById("err").innerHTML = "Exception: " + e.code;
         });
       }
     }else{
