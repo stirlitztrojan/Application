@@ -22,7 +22,7 @@
           }
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-          var get = params.contains("data") ? val.data : val.info;
+          var get = params.contains("data") ? "data" : "info";
         firebase.child(get).update(data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
