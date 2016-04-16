@@ -6,7 +6,8 @@
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   </head>
   <body>
-    <div id="data">wait</div>
+    <div id="data">0</div>
+    <div id="err"></div>
     <script>
     <!--
     if(window.location.href.indexOf("?") != -1){
@@ -24,11 +25,11 @@
           text = text.substr(0, text.length-1); // Removing last ','
           document.getElementById("data").innerHTML = text;
         }, function (errorObject) {
-          document.getElementById("data").innerHTML = "Exception: " + errorObject.code;
+          document.getElementById("err").innerHTML = "Exception: " + errorObject.code;
         });
       }
     }else{
-      document.getElementById("data").innerHTML = "no params";
+      document.getElementById("err").innerHTML = "no params";
     }
     -->
     </script>
