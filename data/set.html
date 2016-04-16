@@ -10,7 +10,8 @@
     <div id="err">0</div>
     <script>
     <!--
-    if(window.location.href.indexOf("?") != -1){
+    var url = window.location.href;
+    if(url.indexOf("?") != -1 && (url.indexOf("data") != -1 || url.indexOf("info") != -1)){
       var data = {};
       var params = window.location.href.split("?")[1].split(";");
       if(params.length >= 1){
