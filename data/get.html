@@ -24,10 +24,12 @@
             document.getElementById("err").innerHTML = "Invalid params";
             return;
           }
+          console.log("data: " + data);
           var output = "";
           params.forEach(function(param){
             var name = param;
-            output += data[name] + ",";
+            var value = data[name];
+            output += value + ",";
           });
           output = output.substr(0, output.length-1); // Removing last ','
           document.getElementById("data").innerHTML = output;
