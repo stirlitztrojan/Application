@@ -30,7 +30,12 @@
           var output = "";
           // Get values by names
           params.forEach(function(param){
-            if(param != "type=" + type) output += data[param] + ",";
+            if(param != "type=" + type){
+              if(data.indexOf(param) != -1) output += data[param] + ",";
+              else{
+                document.getElementById("err").innerHTML = "Invalid params";
+              }
+            }
           });
           output = output.substr(0, output.length-1); // Removing last ','
           document.getElementById("data").innerHTML = output;
