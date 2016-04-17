@@ -37,8 +37,10 @@
               }
             }
           });
-          output = output.substr(0, output.length-1); // Removing last ','
-          document.getElementById("data").innerHTML = output;
+          if(document.getElementById("err").innerHTML == 0){
+            output = output.substr(0, output.length-1); // Removing last ','
+            document.getElementById("data").innerHTML = output;
+          }
         }, function (e) {
           document.getElementById("err").innerHTML = "Exception: " + e.code;
         });
