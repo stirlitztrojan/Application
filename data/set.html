@@ -12,7 +12,7 @@
     <!--
     var url = window.location.href;
     if(url.indexOf("?") != -1){
-      var type = "data";
+      var type = "0";
       var data = {};
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
@@ -24,17 +24,21 @@
             else data[name] = value;
           }
         });
+        if(type == "0"){
+          document.getElementById("err").innerHTML = "4";
+          return;
+        }
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.child(type).update(data, function(e){
           if(e){
-            document.getElementById("err").innerHTML = e.code;
+            document.getElementById("err").innerHTML = "2";
           }else{
             document.getElementById("data").innerHTML = "1";
           }
         });
       }
     }else{
-      document.getElementById("err").innerHTML = "Invalid params";
+      document.getElementById("err").innerHTML = "3";
     }
     -->
     </script>
