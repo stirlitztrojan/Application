@@ -26,16 +26,16 @@
         });
         if(type == "0"){
           document.getElementById("err").innerHTML = "4";
-          return;
+        }else{
+          var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+          firebase.child(type).update(data, function(e){
+            if(e){
+              document.getElementById("err").innerHTML = "2";
+            }else{
+              document.getElementById("data").innerHTML = "1";
+            }
+          });
         }
-        var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        firebase.child(type).update(data, function(e){
-          if(e){
-            document.getElementById("err").innerHTML = "2";
-          }else{
-            document.getElementById("data").innerHTML = "1";
-          }
-        });
       }else{
         document.getElementById("err").innerHTML = "3";
       }
