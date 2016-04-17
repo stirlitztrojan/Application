@@ -25,7 +25,6 @@
           }
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        console.log("data: " + _data);
         firebase.child(_get).update(_data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
