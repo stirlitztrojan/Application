@@ -26,6 +26,7 @@
         // Connect to firebase
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.once("value", function(snapshot) {
+          console.log("@@@@@@@@@@@@@@@ "+ type);
           var _data = snapshot.child(type).val();
           var output = "";
           // Get values by names
