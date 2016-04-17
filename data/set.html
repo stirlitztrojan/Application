@@ -30,6 +30,7 @@
           document.getElementById("err").innerHTML = "Invalid params";
           return;
         }
+        console.log("data: " + data);
         firebase.child(get).update(data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
