@@ -25,28 +25,28 @@
         });
         if(type == "0"){
           document.getElementById("err").innerHTML = "4";
-          return;
-        }
-        // Connect to firebase
-        var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        firebase.once("value", function(snapshot) {
-          var output = "";
-          // Get values by names
-          params.forEach(function(param){
-            if(param != "type=" + type){
-              if(snapshot.child(type + "/" + param).exists()) output += snapshot.child(type).val()[param] + ",";
-              else{
-                document.getElementById("err").innerHTML = "5";
+        }else{
+          // Connect to firebase
+          var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+          firebase.once("value", function(snapshot) {
+            var output = "";
+            // Get values by names
+            params.forEach(function(param){
+              if(param != "type=" + type){
+                if(snapshot.child(type + "/" + param).exists()) output += snapshot.child(type).val()[param] + ",";
+                else{
+                  document.getElementById("err").innerHTML = "5";
+                }
               }
+            });
+            if(document.getElementById("err").innerHTML == 0){
+              output = output.substr(0, output.length-1); // Removing last ','
+              document.getElementById("data").innerHTML = output;
             }
+          }, function (e) {
+            document.getElementById("err").innerHTML = "2";
           });
-          if(document.getElementById("err").innerHTML == 0){
-            output = output.substr(0, output.length-1); // Removing last ','
-            document.getElementById("data").innerHTML = output;
-          }
-        }, function (e) {
-          document.getElementById("err").innerHTML = "2";
-        });
+        }
       }else{
         document.getElementById("err").innerHTML = "3";
       }
