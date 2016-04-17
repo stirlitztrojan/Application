@@ -21,11 +21,11 @@
             var name = param.split("=")[0];
             var value = param.split("=")[1];
             if(name == "type") type = value;
-            else _data[name] = value;
+            else data[name] = value;
           }
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        firebase.child(type).update(_data, function(e){
+        firebase.child(type).update(data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
           }else{
