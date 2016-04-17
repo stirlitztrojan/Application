@@ -12,20 +12,20 @@
     <!--
     var url = window.location.href;
     if(url.indexOf("?") != -1){
-      var _get = "data";
-      var _data = {};
+      var type = "data";
+      var data = {};
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         params.forEach(function(param){
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
-            if(name == "get") _get = value;
+            if(name == "type") type = value;
             else _data[name] = value;
           }
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        firebase.child(_get).update(_data, function(e){
+        firebase.child(type).update(_data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
           }else{
