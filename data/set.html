@@ -6,8 +6,8 @@
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   </head>
   <body>
-    <div id="data">0</div>
-    <div id="err">0</div>
+    <div id="data"></div>
+    <div id="err"></div>
     <script>
     <!--
     var url = window.location.href;
@@ -33,6 +33,7 @@
               document.getElementById("err").innerHTML = "2";
             }else{
               document.getElementById("data").innerHTML = "1";
+              document.getElementById("err").innerHTML = "0";
             }
           });
         }
