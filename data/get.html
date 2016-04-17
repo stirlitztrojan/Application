@@ -33,6 +33,7 @@
               if(snapshot.child(type + "/" + param).exists()) output += snapshot.child(type).val()[param] + ",";
               else{
                 document.getElementById("err").innerHTML = "Invalid params";
+                return;
               }
             }
           });
