@@ -24,7 +24,6 @@
             else data[name] = value;
           }
         });
-        console.log("@@@@@@@@@@@@@@@ "+ type);
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.child(type).update(data, function(e){
           if(e){
