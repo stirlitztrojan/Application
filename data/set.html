@@ -24,8 +24,8 @@
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         var get;
-        if(params.contains("data")) get = snapshot.val().data;
-        else if(params.contains("info")) get = snapshot.val().info;
+        if(params.indexOf("data") != -1) get = snapshot.val().data;
+        else if(params.indexOf("info") != -1) get = snapshot.val().info;
         else{
           document.getElementById("err").innerHTML = "Invalid params";
           return;
