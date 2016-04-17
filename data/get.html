@@ -28,7 +28,7 @@
           var output = "";
           params.forEach(function(param){
             var value = _data[param];
-            if(param != "get=" + get) output += value + ",";
+            if(param != "get=" + _get) output += value + ",";
           });
           output = output.substr(0, output.length-1); // Removing last ','
           document.getElementById("data").innerHTML = output;
