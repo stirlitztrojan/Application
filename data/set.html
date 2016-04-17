@@ -11,7 +11,7 @@
     <script>
     <!--
     var url = window.location.href;
-    if(url.indexOf("?") != -1 && (url.indexOf("data") != -1 || url.indexOf("info") != -1)){
+    if(url.indexOf("?") != -1){
       var data = {};
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
@@ -23,7 +23,13 @@
           }
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        var get = params.contains("data") ? snapshot.val().data : snapshot.val().info;
+        var get;
+        if(params.contains("data")) get = snapshot.val().data;
+        else if(params.contains("info")) get = snapshot.val().info;
+        else{
+          document.getElementById("err").innerHTML = "Invalid params";
+          return;
+        }
         firebase.child(get).update(data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
