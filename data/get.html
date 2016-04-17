@@ -26,12 +26,11 @@
         // Connect to firebase
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.once("value", function(snapshot) {
-          var data = snapshot.child(type).val();
           var output = "";
           // Get values by names
           params.forEach(function(param){
             if(param != "type=" + type){
-              if(data.indexOf(param) != -1) output += data[param] + ",";
+              if(snapshot.child(type + "/" + param).exists()) output += snapshot.child(type).val()[param] + ",";
               else{
                 document.getElementById("err").innerHTML = "Invalid params";
               }
