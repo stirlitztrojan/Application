@@ -12,26 +12,21 @@
     <!--
     var url = window.location.href;
     if(url.indexOf("?") != -1){
-      var data = {};
+      var _get = "data";
+      var _data = {};
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         params.forEach(function(param){
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
-            data[name] = value;
+            if(name == "get") _get = value;
+            else _data[name] = value;
           }
         });
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
-        var get;
-        if(params.indexOf("data") != -1) get = "data";
-        else if(params.indexOf("info") != -1) get = "info";
-        else{
-          document.getElementById("err").innerHTML = "Invalid params";
-          return;
-        }
-        console.log("data: " + data);
-        firebase.child(get).update(data, function(e){
+        console.log("data: " + _data);
+        firebase.child(_get).update(_data, function(e){
           if(e){
             document.getElementById("err").innerHTML = e.code;
           }else{
