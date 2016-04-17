@@ -19,7 +19,7 @@
         
         firebase.once("value", function(snapshot) {
           var data = snapshot.child("data").val();
-          console.log("data: " + data);
+          console.log("data: " + data["test"]);
         });
         
         
