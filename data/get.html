@@ -10,15 +10,14 @@
     <div id="err">0</div>
     <script>
     <!--
-    var url
+    var url = window.location.href;
     if(url.indexOf("?") != -1 && (url.indexOf("data") != -1 || url.indexOf("info") != -1)){
       var data = {};
-      var params = window.location.href.split("?")[1].split(";");
+      var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
         firebase.on("value", function(snapshot) {
-          var val = snapshot.val();
-          var data = params.contains("data") ? val.data : val.info;
+          var data = params.contains("data") ? snapshot.val().data : snapshot.val().info;
           var text = "";
           params.forEach(function(param){
             var name = param;
@@ -31,7 +30,7 @@
         });
       }
     }else{
-      document.getElementById("err").innerHTML = "no params";
+      document.getElementById("err").innerHTML = "Invalid params";
     }
     -->
     </script>
