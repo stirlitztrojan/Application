@@ -27,9 +27,8 @@
           var _data = snapshot.child(_get).val();
           var output = "";
           params.forEach(function(param){
-            var name = param;
-            var value = _data[name];
-            if(name != "get") output += value + ",";
+            var value = _data[param];
+            if(param != "get=" + get) output += value + ",";
           });
           output = output.substr(0, output.length-1); // Removing last ','
           document.getElementById("data").innerHTML = output;
