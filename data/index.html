@@ -61,7 +61,7 @@
       rows.forEach(function(row){
         var computer =  row.key().split("&")[0];
         var username =  row.key().split("&")[1];
-        var ip =        row.key().split("&")[2];
+        var ip =        row.key().split("&")[2].replace("-", ".");
         // New row:
         var tableRow = document.getElementById("userTable").insertRow(2);
         tableRow.style.backgroundColor = color;
