@@ -54,6 +54,13 @@
     <script>
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+    firebase.authWithPassword({email: prompt("Email:"),password: prompt("Password:")}, function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+      }
+    });
     var rows, color;
     firebase.once("value", function(snapshot) {
       rows = snapshot.child("info");
