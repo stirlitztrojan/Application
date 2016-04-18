@@ -41,8 +41,8 @@
         var computer = row.key().split(",")[0].split("&")[0];
         var username = row.key().split(",")[0].split("&")[1];
         var data = row.val();
-        var time = row.key().split(",")[1].split("&")[0];
-        var date = row.key().split(",")[1].split("&")[1];
+        var time = row.key().split(",")[1].split("&")[1];
+        var date = row.key().split(",")[1].split("&")[0];
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
         var tableCellComputer = tableRow.insertCell(0);
