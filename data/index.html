@@ -10,8 +10,28 @@
     <table id="dataTable" border="1">
       <tr><th>Username</th><th>Data</th><th>Time</th></tr>
     </table>
+    <div id="err"></div>
     <script>
     <!--
+    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+    firebase.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var key = childSnapshot.key();
+        var childData = childSnapshot.val();
+        alert(key + ",    " + childData);
+      }
+    }, function (e) {
+      document.getElementById("err").innerHTML = e.code;
+    });
+    
+    
+    /*
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";*/
     
     -->
     </script>
