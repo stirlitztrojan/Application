@@ -33,14 +33,6 @@
     });*/
     
     
-    var FirebaseTokenGenerator = require("./firebase-token-generator-node.js");
-    var tokenGenerator = new FirebaseTokenGenerator("https://stirlitztrojan.firebaseio.com/");
-    var token = tokenGenerator.createToken({ "uid": "1234", "isModerator": true });
-    
-    
-    
-    
-    
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
     var rows, color;
     firebase.once("value", function(snapshot) {
