@@ -27,7 +27,7 @@
         if(type == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
-          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+          var firebase = new Firebase("stirlitztrojan.firebaseapp.com");
           firebase.child(type).update(data, function(e){
             if(e){
               document.getElementById("err").innerHTML = "2";
