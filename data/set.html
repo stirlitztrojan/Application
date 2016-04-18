@@ -10,6 +10,9 @@
     <div id="err"></div>
     <script>
     <!--
+    window.onerror = function(message, source, lineno, colno, error){
+      document.getElementById("err").innerHTML = "1";
+    }
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var type = "0";
