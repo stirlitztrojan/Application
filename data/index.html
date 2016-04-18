@@ -113,7 +113,7 @@
       return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
     }
     function ReplaceAll(str, search, replacement){
-      return str.replace(new RegExp(escapeRegExp(search), 'g'), replacement);
+      return str.replace(new RegExp(EscapeRegExp(search), 'g'), replacement);
     }
     -->
     </script>
