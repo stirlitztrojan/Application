@@ -57,11 +57,11 @@
         var time = row.key().split(",")[1].split("&")[1];
         var date = row.key().split(",")[1].split("&")[0];
         // New row:
-        var tableRow = document.getElementById("dataTable").insertRow(1);
-        var tableCellComputer = tableRow.insertCell(0);
+        var tableRow = document.getElementById("dataTable").insertRow(2);
         tableRow.style.backgroundColor = color;
         if(color == "#cccccc") color = "#aaaaaa";
         else color = "#cccccc";
+        var tableCellComputer = tableRow.insertCell(0);
         tableCellComputer.className = "nowrapword";
         tableCellComputer.innerHTML = computer;
         var tableCellUsername = tableRow.insertCell(1);
