@@ -5,6 +5,18 @@
     <title>Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <style>
+    .wrapword{
+      white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+      white-space: -webkit-pre-wrap; /*Chrome & Safari */ 
+      white-space: -pre-wrap;      /* Opera 4-6 */
+      white-space: -o-pre-wrap;    /* Opera 7 */
+      white-space: pre-wrap;       /* css-3 */
+      word-wrap: break-word;       /* Internet Explorer 5.5+ */
+      word-break: break-all;
+      white-space: normal;
+    }
+    </style>
   </head>
   <body>
     <h1>Data</h1>
@@ -24,13 +36,13 @@
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
         var tableCellUser = tableRow.insertCell(0);
-        tableCellUser.style = "word-wrap: break-word;";
+        tableCellUser.class = "wrapword";
         tableCellUser.innerHTML = user;
         var tableCellData = tableRow.insertCell(1);
-        tableCellData.style = "word-wrap: break-word;";
+        tableCellUser.class = "wrapword";
         tableCellData.innerHTML = data;
         var tableCellTime = tableRow.insertCell(2);
-        tableCellTime.style = "word-wrap: break-word;";
+        tableCellUser.class = "wrapword";
         tableCellTime.innerHTML = time;
       });
     }, function (e) {
