@@ -32,17 +32,14 @@
     });*/
     
     
-    function authDataCallback(authData) {
+    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+    firebase.onAuth(function(){
       if (authData) {
         console.log("User " + authData.uid + " is logged in with " + authData.provider);
       } else {
         console.log("User is logged out");
       }
-    }
-    
-    
-    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
-    firebase.onAuth(authDataCallback);
+    });
     
     
     
