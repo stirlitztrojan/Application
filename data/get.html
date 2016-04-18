@@ -27,14 +27,17 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           // Connect to firebase
-          var firebase = new Firebase("https://scorching-heat-6563.firebaseio.com/");
+          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
           firebase.once("value", function(snapshot) {
             var output = "";
             // Get values by names
             params.forEach(function(param){
               if(param != "type=" + type){
-                if(snapshot.child(type + "/" + param).exists()) output += snapshot.child(type).val()[param] + ",";
-                else{
+                if(snapshot.child(type + "/" + param).exists()){
+                  var paramValue = snapshot.child(type).val()[param];
+                  if(paramValue.replace(" ", "") == "") output += "0" + ",";
+                  else output += paramValue + ",";
+                }else{
                   document.getElementById("err").innerHTML = "5";
                 }
               }
