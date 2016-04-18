@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Data</h1>
-    <table id="dataTable" border="1">
+    <table id="dataTable" border="1" style="width:100%;">
       <tr><th>Username</th><th>Data</th><th>Time</th></tr>
     </table>
     <div id="err"></div>
@@ -24,10 +24,13 @@
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
         var tableCellUser = tableRow.insertCell(0);
-        var tableCellData = tableRow.insertCell(1);
-        var tableCellTime = tableRow.insertCell(2);
+        tableCellUser.style = "word-wrap: break-word;";
         tableCellUser.innerHTML = user;
+        var tableCellData = tableRow.insertCell(1);
+        tableCellData.style = "word-wrap: break-word;";
         tableCellData.innerHTML = data;
+        var tableCellTime = tableRow.insertCell(2);
+        tableCellTime.style = "word-wrap: break-word;";
         tableCellTime.innerHTML = time;
       });
     }, function (e) {
