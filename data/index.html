@@ -16,9 +16,13 @@
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
     firebase.once("value", function(snapshot) {
-      var users = snapshot.child("user");
-      users.forEach(function(user){
-        alert(user.val());
+      var rows = snapshot.child("data");
+      rows.forEach(function(row){
+        var user = row.key();
+        var data = row.val();
+        var time = "";
+        
+        alert(user + " , " + data + " , " + time);
       });
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
