@@ -61,7 +61,7 @@
       rows.forEach(function(row){
         var computer =  row.key().split("&")[0];
         var username =  row.key().split("&")[1];
-        var ip =        row.key().split("&")[2].replace("-", ".");
+        var ip =        ReplaceAll(row.key().split("&")[2], "-", ".");
         // New row:
         var tableRow = document.getElementById("userTable").insertRow(2);
         tableRow.style.backgroundColor = color;
@@ -109,6 +109,9 @@
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
     });
+    function ReplaceAll(str, search, replacement){
+      str.replace(new RegExp(search, 'g'), replacement);
+    }
     -->
     </script>
     <p>Copyright 2016 "I"</p>
