@@ -19,18 +19,28 @@
     .nowrapword{
       white-space: nowrap;
     }
+    table, tr, th, td{
+      border: 1px solid #000000;
+    }
+    table{
+      width:100%;
+    }
     td, th { 
       display: table-cell;
       vertical-align: top; 
       text-align: left;
       padding: 10px;
     }
+    tr #head{
+      background-color:#cccccc;
+      border-bottom:5px solid #000000;
+    }
     </style>
   </head>
   <body>
     <h1>Data</h1>
-    <table id="dataTable" border="1" style="width:100%;">
-      <tr style="background-color:#cccccc;border-bottom:5px solid #000000;"><th>Computer</th><th>Username</th><th>Data</th><th>Time</th><th>Date</th></tr>
+    <table id="dataTable">
+      <tr class="head"><th>Computer</th><th>Username</th><th>Data</th><th>Time</th><th>Date</th></tr>
     </table>
     <div id="err"></div>
     <script>
