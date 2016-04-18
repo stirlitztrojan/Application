@@ -38,20 +38,28 @@
     firebase.once("value", function(snapshot) {
       var rows = snapshot.child("data");
       rows.forEach(function(row){
-        var user = row.key().split(",")[0];
+        var computer = row.key().split(",")[0].split("&")[0];
+        var username = row.key().split(",")[0].split("&")[1];
         var data = row.val();
-        var time = row.key().split(",")[1];
+        var time = row.key().split(",")[1].split("&")[0];
+        var date = row.key().split(",")[1].split("&")[1];
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
-        var tableCellUser = tableRow.insertCell(0);
-        tableCellUser.className = "nowrapword";
-        tableCellUser.innerHTML = user;
-        var tableCellData = tableRow.insertCell(1);
+        var tableCellComputer = tableRow.insertCell(0);
+        tableCellComputer.className = "nowrapword";
+        tableCellComputer.innerHTML = computer;
+        var tableCellUsername = tableRow.insertCell(1);
+        tableCellUsername.className = "nowrapword";
+        tableCellUsername.innerHTML = username;
+        var tableCellData = tableRow.insertCell(2);
         tableCellData.className = "wrapword";
         tableCellData.innerHTML = data;
-        var tableCellTime = tableRow.insertCell(2);
+        var tableCellTime = tableRow.insertCell(3);
         tableCellTime.className = "nowrapword";
         tableCellTime.innerHTML = time;
+        var tableCellDate = tableRow.insertCell(4);
+        tableCellDate.className = "nowrapword";
+        tableCellDate.innerHTML = date;
       });
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
