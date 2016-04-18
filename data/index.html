@@ -16,10 +16,8 @@
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
     firebase.once("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-        var key = childSnapshot.key();
-        var childData = childSnapshot.val();
-        alert(key + ",    " + childData);
+      snapshot.val().user.forEach(function(user) {
+        alert(user);
       });
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
