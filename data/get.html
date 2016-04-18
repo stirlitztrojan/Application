@@ -27,7 +27,7 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           // Connect to firebase
-          var firebase = new Firebase("stirlitztrojan.firebaseapp.com");
+          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
           firebase.once("value", function(snapshot) {
             var output = "";
             // Get values by names
