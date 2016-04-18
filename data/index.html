@@ -19,7 +19,7 @@
       var rows = snapshot.child("data");
       rows.forEach(function(row){
         
-        alert(row.key());
+        alert(row.val());
         /*
         var user = row.key().split()[0];
         var data = row.val();
