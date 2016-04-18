@@ -33,7 +33,9 @@
       /*
       rows = snapshot.child("info");
       if(rows["pas"].val()==prompt(""));
-      rows = snapshot.child("user");*/
+      */
+      
+      rows = snapshot.child("user");
       color = "#cccccc";
       rows.forEach(function(row){
         var computer =  row.key().split("&")[0];
