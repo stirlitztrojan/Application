@@ -18,6 +18,9 @@
     firebase.once("value", function(snapshot) {
       var rows = snapshot.child("data");
       rows.forEach(function(row){
+        
+        alert(row.key());
+        /*
         var user = row.key().split()[0];
         var data = row.val();
         var time = row.key().split()[1];
@@ -28,7 +31,7 @@
         var tableCellTime = tableRow.insertCell(1);
         tableCellUser.innerHTML = user;
         tableCellData.innerHTML = data;
-        tableCellTime.innerHTML = time;
+        tableCellTime.innerHTML = time;*/
       });
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
