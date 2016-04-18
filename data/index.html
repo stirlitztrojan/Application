@@ -53,11 +53,12 @@
     <div id="err"></div>
     <script>
     <!--
-    var FirebaseTokenGenerator = require("firebase-token-generator.js");
-    var tokenGenerator = new FirebaseTokenGenerator(FIREBASE_SECRET);
-    var token = tokenGenerator.createToken({ "pas": prompt("Password:") });
-
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+    firebase.authWithPassword({email: prompt("Email:"), password: prompt("Password:")}, function(error, authData) {
+      if (error) console.log("Login Failed!", error);
+      else console.log("Authenticated successfully with payload:", authData);
+    });
+    
     var rows, color;
     firebase.once("value", function(snapshot) {
       rows = snapshot.child("info");
