@@ -39,13 +39,13 @@
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
         var tableCellUser = tableRow.insertCell(0);
-        tableCellData.className = "nowrapword";
+        tableCellUser.className = "nowrapword";
         tableCellUser.innerHTML = user;
         var tableCellData = tableRow.insertCell(1);
         tableCellData.className = "wrapword";
         tableCellData.innerHTML = data;
         var tableCellTime = tableRow.insertCell(2);
-        tableCellData.className = "nowrapword";
+        tableCellTime.className = "nowrapword";
         tableCellTime.innerHTML = time;
       });
     }, function (e) {
