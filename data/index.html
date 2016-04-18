@@ -59,9 +59,9 @@
       rows = snapshot.child("user");
       color = "#cccccc";
       rows.forEach(function(row){
-        var computer = row.key().split(",")[0].split("&")[0];
-        var username = row.key().split(",")[0].split("&")[1];
-        var ip = row.key().split(",")[1];
+        var computer =  row.key().split("&")[0];
+        var username =  row.key().split("&")[1];
+        var ip =        row.key().split("&")[2];
         // New row:
         var tableRow = document.getElementById("userTable").insertRow(2);
         tableRow.style.backgroundColor = color;
