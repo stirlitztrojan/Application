@@ -18,20 +18,17 @@
     firebase.once("value", function(snapshot) {
       var rows = snapshot.child("data");
       rows.forEach(function(row){
-        
-        alert(row.val());
-        /*
-        var user = row.key().split()[0];
+        var user = row.key().split(",")[0];
         var data = row.val();
-        var time = row.key().split()[1];
+        var time = row.key().split(",")[1];
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
         var tableCellUser = tableRow.insertCell(0);
         var tableCellData = tableRow.insertCell(1);
-        var tableCellTime = tableRow.insertCell(1);
+        var tableCellTime = tableRow.insertCell(2);
         tableCellUser.innerHTML = user;
         tableCellData.innerHTML = data;
-        tableCellTime.innerHTML = time;*/
+        tableCellTime.innerHTML = time;
       });
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
