@@ -36,11 +36,9 @@
           var authClient = new FirebaseAuthClient(firebase, function(error, user) {
             if (error) console.log("error: " + error);
             else if (user){
-              authClient.login("password", {email: "stirlitztrojan@gmail.com", password: "14234321", rememberMe: "false"});
-              
-              
-              
-              firebase.once("value", function(snapshot) {
+            
+            
+            firebase.once("value", function(snapshot) {
             var output = "";
             // Get values by names
             params.forEach(function(param){
@@ -64,10 +62,19 @@
           });
               
               
+              
+              
+              
+              
+              
+              
+              
+              
+              
             }
             else console.log("Invalid user");
           });
-          
+          authClient.login("password", {email: "stirlitztrojan@gmail.com", password: "14234321"});
           
           /*
           firebase.authWithPassword({
