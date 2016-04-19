@@ -32,8 +32,8 @@
             var name = param.split("=")[0];
             var value = param.split("=")[1];
             if(name == "database") database = value;
-            if(name == "password") password = value;
-            if(name == "category") category = value;
+            else if(name == "password") password = value;
+            else if(name == "category") category = value;
           }
         });
         if(category == "0" || database == "0" || password == "0"){
