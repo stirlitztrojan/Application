@@ -13,6 +13,13 @@
     window.onerror = function(message, source, lineno, colno, error){
       document.getElementById("err").innerHTML = "1";
     }
+    function RemoveItem(arr, value){
+      var i = arr.indexOf(value);
+      if(i != -1) {
+      	arr.splice(i, 1);
+      }
+      return arr;
+    }
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var database = "0";
@@ -32,8 +39,8 @@
         if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
-          params = params.splice(params.indexOf("type="+type), 1);
-          params = params.splice(params.indexOf("database="+database), 1);
+          params = RemoveItem(params, "type="+type);
+          params = RemoveItem(params, "database="+database);
           // Connect to firebase
           var firebase = new Firebase("https://" + database + ".firebaseio.com/");
           firebase.child(type).update(data, function(e){
