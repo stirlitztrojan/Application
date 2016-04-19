@@ -20,9 +20,9 @@
       var type = "0";
       var data = {};
       var params = url.split("?")[1].split(";");
-      alert(params.length);
       if(params.length >= 1){
-        params.forEach(function(param){
+        for(var i = 0; i < params.length; i++){
+          var param = params[i];
           console.log(param);
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
