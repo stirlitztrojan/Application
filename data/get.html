@@ -40,10 +40,12 @@
           console.log("i1: "+i1);
           console.log("i2: "+i2);
           
+          console.log("params: " + params);
+          
           params = params.splice(i1, 1);
           params = params.splice(i2, 1);
           
-          console.log("4: " + params);
+          console.log("params: " + params);
           // Connect to firebase
           var firebase = new Firebase("https://"+database+".firebaseio.com/");
           firebase.once("value", function(snapshot) {
