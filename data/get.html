@@ -23,32 +23,33 @@
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var database = "0";
-      var type = "0";
+      var password = "0";
+      var category = "0";
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
-        // Search type and database value
         params.forEach(function(param){
-          
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
             if(name == "database") database = value;
-            else if(name == "type") type = value;
+            if(name == "password") password = value;
+            if(name == "category") category = value;
           }
         });
-        if(type == "0" || database == "0"){
+        if(category == "0" || database == "0" || password == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
           params = RemoveItem(params, "database="+database);
-          params = RemoveItem(params, "type="+type);
+          params = RemoveItem(params, "password="+password);
+          params = RemoveItem(params, "category="+category);
           // Connect to firebase
-          var firebase = new Firebase("https://"+database+".firebaseio.com/");
+          var firebase = new Firebase("https://"+database+".firebaseio.com/" + password);
           firebase.once("value", function(snapshot) {
             var output = "";
             // Get values by names
             params.forEach(function(param){
-              if(snapshot.child(type + "/" + param).exists()){
-                var paramValue = snapshot.child(type).val()[param];
+              if(snapshot.child(category + "/" + param).exists()){
+                var paramValue = snapshot.child(category).val()[param];
                 if(paramValue.replace(" ", "") == "") output += "0" + ",";
                 else output += paramValue + ",";
               }else{
