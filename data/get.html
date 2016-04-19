@@ -13,7 +13,7 @@
     window.onerror = function(message, source, lineno, colno, error){
       document.getElementById("err").innerHTML = "1";
     }
-    function RemoveArrayItemByValue(arr, value){
+    function RemoveItem(arr, value){
       var i = arr.indexOf("b");
       if(i != -1) {
       	arr.splice(i, 1);
@@ -44,8 +44,8 @@
           
           console.log("params: " + params);
           
-          RemoveArrayItemByValue(params, "database="+database);
-          RemoveArrayItemByValue(params, "type="+type);
+          params = RemoveItem(params, "database="+database);
+          params = RemoveItem(params, "type="+type);
           
           console.log("params: " + params);
           
