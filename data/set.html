@@ -16,6 +16,7 @@
     }
     var url = window.location.href;
     if(url.indexOf("?") != -1){
+      var database = "0";
       var type = "0";
       var data = {};
       var params = url.split("?")[1].split(";");
@@ -28,10 +29,10 @@
             else data[name] = value;
           }
         });
-        if(type == "0"){
+        if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
-          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+          var firebase = new Firebase("https://" + database + ".firebaseio.com/");
           firebase.child(type).update(data, function(e){
             if(e){
               document.getElementById("err").innerHTML = "2";
