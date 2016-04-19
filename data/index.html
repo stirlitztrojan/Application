@@ -31,7 +31,7 @@
           var username =  name.split("&")[1];
           var ip =        ReplaceAll(name.split("&")[2], "-", ".");
           // New row:
-          var tableRow = table.insertRow(2);
+          var tableRow = table.insertRow(1);
           tableRow.style.backgroundColor = color;
           if(color == "#cccccc") color = "#aaaaaa";
           else color = "#cccccc";
@@ -61,7 +61,7 @@
           var time = name.split(",")[1].split("&")[1];
           var date = name.split(",")[1].split("&")[0];
           // New row:
-          var tableRow = table.insertRow(2);
+          var tableRow = table.insertRow(1);
           tableRow.style.backgroundColor = color;
           if(color == "#cccccc") color = "#aaaaaa";
           else color = "#cccccc";
