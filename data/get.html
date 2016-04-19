@@ -17,6 +17,7 @@
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var type = "0";
+      var database = "0";
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         // Search type value
@@ -25,63 +26,36 @@
             var name = param.split("=")[0];
             var value = param.split("=")[1];
             if(name == "type") type = value;
+            else if(name == "database") database = value;
           }
         });
-        if(type == "0"){
+        if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
           // Connect to firebase
-          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
-          
-          
-          
-          
-          
-          
-          var authClient = new FirebaseSimpleLogin(firebase, function(error, user) {
-            if (error) console.log("error: " + error);
-            if (user){
-              firebase.once("value", function(snapshot) {
-                var output = "";
-                // Get values by names
-                params.forEach(function(param){
-                  if(param != "type=" + type){
-                    if(snapshot.child(type + "/" + param).exists()){
-                      var paramValue = snapshot.child(type).val()[param];
-                      if(paramValue.replace(" ", "") == "") output += "0" + ",";
-                      else output += paramValue + ",";
-                    }else{
-                      document.getElementById("err").innerHTML = "5";
-                    }
-                  }
-                });
-                if(document.getElementById("err").innerHTML == ""){
-                  output = output.substr(0, output.length-1); // Removing last ','
-                  document.getElementById("data").innerHTML = output;
-                  document.getElementById("err").innerHTML = "0";
+          var firebase = new Firebase("https://"+database+".firebaseio.com/");
+          firebase.once("value", function(snapshot) {
+            var output = "";
+            // Get values by names
+            params.forEach(function(param){
+              if(param != "type=" + type){
+                if(snapshot.child(type + "/" + param).exists()){
+                  var paramValue = snapshot.child(type).val()[param];
+                  if(paramValue.replace(" ", "") == "") output += "0" + ",";
+                  else output += paramValue + ",";
+                }else{
+                  document.getElementById("err").innerHTML = "5";
                 }
-              }, function (e) {
-                document.getElementById("err").innerHTML = "2";
-              });
+              }
+            });
+            if(document.getElementById("err").innerHTML == ""){
+              output = output.substr(0, output.length-1); // Removing last ','
+              document.getElementById("data").innerHTML = output;
+              document.getElementById("err").innerHTML = "0";
             }
-            else console.log("Invalid user");
+          }, function (e) {
+            document.getElementById("err").innerHTML = "2";
           });
-          authClient.login("password", {email: "stirlitztrojan@gmail.com", password: "14234321"});
-          
-          
-          
-          
-          /*
-          firebase.authWithPassword({
-            email    : "stirlitztrojan@gmail.com",
-            password : "14234321"
-          }, function(error, authData) {
-            if (error) {
-              console.log("Login Failed!", error);
-            } else {
-              console.log("Authenticated successfully with payload:", authData);
-            }
-          });*/
         }
       }else{
         document.getElementById("err").innerHTML = "3";
