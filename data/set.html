@@ -22,6 +22,7 @@
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         params.forEach(function(param){
+          console.log("param : " + param);
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
