@@ -12,10 +12,15 @@
     <script>
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     firebase.on("value", function(snapshot) {
-      console.log(snapshot.val());
-      console.log(snapshot.val().data);
-      console.log(snapshot.val().data.length);
-      console.log(snapshot.val().data[0]);
+      var data = snapshot.val().data;
+      
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          alert(key + " -> " + data[key]);
+        }
+      }
+      
+      
     });
     </script>
 </body>
