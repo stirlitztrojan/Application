@@ -19,7 +19,19 @@
     firebase.on("value", function(snapshot) {
       var table, rows, color;
       
+      var tableRow, tableCellComputer, tableCellUsername, tableCellIp;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
+      tableRow = table.insertRow(1);
+      tableRow.style.backgroundColor = "#aaaaaa";
+      tableCellComputer = document.createElement("TH");
+      tableCellComputer.innerHTML = "Computer";
+      tableRow.appendChild(tableCellComputer);
+      tableCellUsername = document.createElement("TH");
+      tableCellUsername.innerHTML = "Username";
+      tableRow.appendChild(tableCellUsername);
+      tableCellIp = document.createElement("TH");
+      tableCellIp.innerHTML = "IP";
+      tableRow.appendChild(tableCellIp);
       rows = snapshot.val().user;
       color = "#cccccc";
       for (var key in rows) {
@@ -31,23 +43,41 @@
           var username =  name.split("&")[1];
           var ip =        ReplaceAll(name.split("&")[2], "-", ".");
           // New row:
-          var tableRow = table.insertRow(1);
+          tableRow = table.insertRow(1);
           tableRow.style.backgroundColor = color;
           if(color == "#cccccc") color = "#aaaaaa";
           else color = "#cccccc";
-          var tableCellComputer = tableRow.insertCell(0);
+          tableCellComputer = tableRow.insertCell(0);
           tableCellComputer.className = "nowrapword";
           tableCellComputer.innerHTML = computer;
-          var tableCellUsername = tableRow.insertCell(1);
+          tableCellUsername = tableRow.insertCell(1);
           tableCellUsername.className = "nowrapword";
           tableCellUsername.innerHTML = username;
-          var tableCellIp = tableRow.insertCell(2);
+          tableCellIp = tableRow.insertCell(2);
           tableCellIp.className = "nowrapword";
           tableCellIp.innerHTML = ip;
         }
       }
       
+      var tableCellData, tableCellTime, tableCellDate;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
+      tableRow = table.insertRow(1);
+      tableRow.style.backgroundColor = "#aaaaaa";
+      tableCellComputer = document.createElement("TH");
+      tableCellComputer.innerHTML = "Computer";
+      tableRow.appendChild(tableCellComputer);
+      tableCellUsername = document.createElement("TH");
+      tableCellUsername.innerHTML = "Username";
+      tableRow.appendChild(tableCellUsername);
+      tableCellData = document.createElement("TH");
+      tableCellData.innerHTML = "Data";
+      tableRow.appendChild(tableCellData);
+      tableCellTime = document.createElement("TH");
+      tableCellTime.innerHTML = "Time";
+      tableRow.appendChild(tableCellTime);
+      tableCellDate = document.createElement("TH");
+      tableCellDate.innerHTML = "Date";
+      tableRow.appendChild(tableCellDate);
       rows = snapshot.val().data;
       color = "#cccccc";
       for (var key in rows) {
