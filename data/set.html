@@ -27,7 +27,8 @@
             var name = param.split("=")[0];
             var value = param.split("=")[1];
             if(name == "type") type = value;
-            if(name == "database") database = value;
+            else if(name == "database") database = value;
+            else data[name] = value;
           }
         });
         params = params.splice(params.indexOf("type="+type), 1);
@@ -36,6 +37,7 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           var firebase = new Firebase("https://" + database + ".firebaseio.com/");
+          alert(data);
           firebase.child(type).update(data, function(e){
             if(e){
               document.getElementById("err").innerHTML = "2";
