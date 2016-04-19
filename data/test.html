@@ -19,16 +19,11 @@
             </fieldset>
         </form>
     </div>
-    <button id="opener-login">Login</button>
-    <button id="opener-logout">Login</button>
+    <button onclick="Login()">Login</button>
+    <button onclick="Logout()">Logout</button>
     <br />
     <input id="data" />
     <script>
-    // this is derived from
-    // http://stackoverflow.com/questions/15167981/how-do-i-use-firebase-simple-login-with-email-password/15167983#15167983
-    
-    
-    // CHANGE THIS to your own firebase
     var ref = new Firebase("https://stirlitztrojan.firebaseio.com");
     // then go to your firebase console, click the auth tab, scroll down to 
     // authentication providers, and enable 'email/password'
@@ -45,36 +40,15 @@
       }
     }
     */
-    //
-    
-    // global user (is this a good thing?)
-    myUser = -1;
-    
-    $(function () {
-        $("#dialog-login").dialog({
-            autoOpen: false,
-            buttons: {
-                "ok": function () {
-                    console.log('trying to login: ' + $("#login-email").val());
-    
-                    var email = $("#login-email").val();
-                    var password = $("#login-password").val();
-    
-                    doLogin(email, password);
-                    $(this).dialog("close");
-                },
-                Cancel: function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-        $("#opener-login").click(function () {
-            $("#dialog-login").dialog("open");
-        });
-        $("#opener-logout").click(function () {
-            authClient.logout();
-        });
-    });
+    function Login(){
+      console.log('trying to login: ' + $("#login-email").val());
+      var email = $("#login-email").val();
+      var password = $("#login-password").val();
+      doLogin(email, password);
+    }
+    function Logout(){
+      authClient.logout();
+    }
     function doLogin(email, password) {
         authClient.login('password', {
             email: email,
