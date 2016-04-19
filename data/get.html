@@ -33,12 +33,26 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           
-          console.log("params: " + params);
           
-          params = params.splice(params.indexOf("database="+database), 1);
-          params = params.splice(params.indexOf("type="+type), 1);
           
           console.log("params: " + params);
+          
+          
+          var i = params.indexOf("database="+database);
+          if(i != -1) {
+          	params.splice(i, 1);
+          }
+          
+          i = params.indexOf("type="+type);
+          if(i != -1) {
+          	params.splice(i, 1);
+          }
+          
+          
+          console.log("params: " + params);
+          
+          
+          
           // Connect to firebase
           var firebase = new Firebase("https://"+database+".firebaseio.com/");
           firebase.once("value", function(snapshot) {
