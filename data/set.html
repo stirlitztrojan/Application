@@ -22,7 +22,6 @@
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         params.forEach(function(param){
-          console.log(param);
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
@@ -37,7 +36,6 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           var firebase = new Firebase("https://" + database + ".firebaseio.com/");
-          console.log(data);
           firebase.child(type).update(data, function(e){
             if(e){
               document.getElementById("err").innerHTML = "2";
