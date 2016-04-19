@@ -30,11 +30,10 @@
     firebase.on("value", function(snapshot) {
       console.log(snapshot.val());
     });
-    return;
     
     
-    
-    firebase.once("value", function(snapshot) {/*
+    /*
+    firebase.once("value", function(snapshot) {
       rows = snapshot.child("user");
       color = "#cccccc";
       rows.forEach(function(row){
@@ -56,7 +55,7 @@
         tableCellIp.className = "nowrapword";
         tableCellIp.innerHTML = ip;
       });
-      */
+      
       
       
       
@@ -97,7 +96,7 @@
     }
     function ReplaceAll(str, search, replacement){
       return str.replace(new RegExp(EscapeRegExp(search), 'g'), replacement);
-    }
+    }*/
     -->
     </script>
   </body>
