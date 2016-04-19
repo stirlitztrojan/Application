@@ -33,17 +33,10 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           
-          
-          var i1 = params.indexOf("database="+database);
-          var i2 = params.indexOf("type="+type);
-          
-          console.log("i1: "+i1);
-          console.log("i2: "+i2);
-          
           console.log("params: " + params);
           
-          params = params.splice(i1, 1);
-          params = params.splice(i2, 1);
+          params = params.splice(params.indexOf("database="+database), 1);
+          params = params.splice(params.indexOf("type="+type), 1);
           
           console.log("params: " + params);
           // Connect to firebase
