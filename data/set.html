@@ -21,22 +21,17 @@
       var data = {};
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
-        for(var i = 0; i < params.length; i++){
-          var param = params[i];
+        params.forEach(function(param){
           console.log(param);
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
-            if(name == "type"){
-              type = value;
-              params = params.splice(params.indexOf(param), 1);
-            }
-            if(name == "database"){
-              database = value;
-              params = params.splice(params.indexOf(param), 1);
-            }
+            if(name == "type") type = value;
+            if(name == "database") database = value;
           }
-        }
+        });
+        params = params.splice(params.indexOf("type="+type), 1);
+        params = params.splice(params.indexOf("database="+database), 1);
         if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
