@@ -20,7 +20,7 @@
       var type = "0";
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
-        // Search type value
+        // Search type and database value
         params.forEach(function(param){
           console.log("param: " + param);
           if(param.indexOf("=")!=-1){
@@ -28,10 +28,10 @@
             var value = param.split("=")[1];
             if(name == "database"){
               database = value;
-              params.splice(params.indexOf(param), 1);
+              params = params.splice(params.indexOf("white"), 1);
             }else if(name == "type"){
               type = value;
-              params.splice(params.indexOf(param), 1);
+              params = params.splice(params.indexOf("white"), 1);
             }
           }
         });
