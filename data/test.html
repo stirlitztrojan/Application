@@ -9,68 +9,13 @@
     <script src="jquery-1.12.3.js"></script>
   </head>
   <body>
-    <div id="dialog-login" title="Login user">
-        <form>
-            <fieldset>
-                <label for="name">Email</label>
-                <input type="text" name="email" id="login-email" class="text ui-widget-content ui-corner-all" />
-                <label for="password">Password</label>
-                <input type="password" name="password" id="login-password" value="" class="text ui-widget-content ui-corner-all" />
-            </fieldset>
-        </form>
-    </div>
-    <button onclick="Login()">Login</button>
-    <button onclick="Logout()">Logout</button>
-    <br />
-    <input id="data" />
     <script>
-    var ref = new Firebase("https://stirlitztrojan.firebaseio.com");
-    // then go to your firebase console, click the auth tab, scroll down to 
-    // authentication providers, and enable 'email/password'
-    // Now enter this in the 'Auth' tab to the left.
-    /*
-    {
-      "rules": {
-        "users": {
-          "$userid": {
-            ".read": "auth.id == $userid",
-            ".write": "auth.id == $userid"
-          }
-        }
-      }
-    }
-    */
-    function Login(){
-      console.log('trying to login: ' + $("#login-email").val());
-      var email = $("#login-email").val();
-      var password = $("#login-password").val();
-      doLogin(email, password);
-    }
-    function Logout(){
-      authClient.logout();
-    }
-    function doLogin(email, password) {
-        authClient.login('password', {
-            email: email,
-            password: password
-        });
-    };
-    var authClient = new FirebaseAuthClient(ref, function (error, user) {
-        if (error) {
-            alert(error);
-            return;
-        }
-        if (user) {
-            console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-            ref.once("value", function(snapshot) {
-              console.log("data: " + snapshot);
-            }, function (e) {
-              console.log("error: " + e);
-            });
-            console.log('logged in')
-        } else {
-            console.log('logged out');
-        }
+    var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
+    firebase.on("value", function(snapshot) {
+      console.log(snapshot.val());
+      console.log(snapshot.val().data);
+      console.log(snapshot.val().data.length);
+      console.log(snapshot.val().data[0]);
     });
     </script>
 </body>
