@@ -34,42 +34,42 @@
           var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
           
           
+          
+          
+          
+          
           var authClient = new FirebaseSimpleLogin(firebase, function(error, user) {
             if (error) console.log("error: " + error);
             if (user){
-            
-            
-            firebase.once("value", function(snapshot) {
-            var output = "";
-            // Get values by names
-            params.forEach(function(param){
-              if(param != "type=" + type){
-                if(snapshot.child(type + "/" + param).exists()){
-                  var paramValue = snapshot.child(type).val()[param];
-                  if(paramValue.replace(" ", "") == "") output += "0" + ",";
-                  else output += paramValue + ",";
-                }else{
-                  document.getElementById("err").innerHTML = "5";
+              firebase.once("value", function(snapshot) {
+                var output = "";
+                // Get values by names
+                params.forEach(function(param){
+                  if(param != "type=" + type){
+                    if(snapshot.child(type + "/" + param).exists()){
+                      var paramValue = snapshot.child(type).val()[param];
+                      if(paramValue.replace(" ", "") == "") output += "0" + ",";
+                      else output += paramValue + ",";
+                    }else{
+                      document.getElementById("err").innerHTML = "5";
+                    }
+                  }
+                });
+                if(document.getElementById("err").innerHTML == ""){
+                  output = output.substr(0, output.length-1); // Removing last ','
+                  document.getElementById("data").innerHTML = output;
+                  document.getElementById("err").innerHTML = "0";
                 }
-              }
-            });
-            if(document.getElementById("err").innerHTML == ""){
-              output = output.substr(0, output.length-1); // Removing last ','
-              document.getElementById("data").innerHTML = output;
-              document.getElementById("err").innerHTML = "0";
-            }
-          }, function (e) {
-            document.getElementById("err").innerHTML = "2";
-          });
-          authClient.login("password", {email: "stirlitztrojan@gmail.com", password: "14234321"});
-              
-              
-              
-              
-              
+              }, function (e) {
+                document.getElementById("err").innerHTML = "2";
+              });
             }
             else console.log("Invalid user");
           });
+          authClient.login("password", {email: "stirlitztrojan@gmail.com", password: "14234321"});
+          
+          
+          
           
           /*
           firebase.authWithPassword({
@@ -82,12 +82,6 @@
               console.log("Authenticated successfully with payload:", authData);
             }
           });*/
-          
-          
-          
-          
-          
-          
         }
       }else{
         document.getElementById("err").innerHTML = "3";
