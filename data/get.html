@@ -28,10 +28,10 @@
             var value = param.split("=")[1];
             if(name == "database"){
               database = value;
-              params = params.splice(params.indexOf("white"), 1);
+              params = params.splice(params.indexOf(param), 1);
             }else if(name == "type"){
               type = value;
-              params = params.splice(params.indexOf("white"), 1);
+              params = params.splice(params.indexOf(param), 1);
             }
           }
         });
