@@ -25,6 +25,15 @@
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     var rows, color;
+    
+    
+    firebase.on("value", function(snapshot) {
+      console.log(snapshot.val());
+    }
+    return;
+    
+    
+    
     firebase.once("value", function(snapshot) {/*
       rows = snapshot.child("user");
       color = "#cccccc";
