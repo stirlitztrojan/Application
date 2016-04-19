@@ -13,6 +13,13 @@
     window.onerror = function(message, source, lineno, colno, error){
       document.getElementById("err").innerHTML = "1";
     }
+    function RemoveArrayItemByValue(arr, value){
+      var i = arr.indexOf("b");
+      if(i != -1) {
+      	arr.splice(i, 1);
+      }
+      return arr;
+    }
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var database = "0";
@@ -37,17 +44,8 @@
           
           console.log("params: " + params);
           
-          
-          var i = params.indexOf("database="+database);
-          if(i != -1) {
-          	params.splice(i, 1);
-          }
-          
-          i = params.indexOf("type="+type);
-          if(i != -1) {
-          	params.splice(i, 1);
-          }
-          
+          RemoveArrayItemByValue(params, "database="+database);
+          RemoveArrayItemByValue(params, "type="+type);
           
           console.log("params: " + params);
           
