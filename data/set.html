@@ -37,7 +37,7 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           var firebase = new Firebase("https://" + database + ".firebaseio.com/");
-          alert(data);
+          console.log(data);
           firebase.child(type).update(data, function(e){
             if(e){
               document.getElementById("err").innerHTML = "2";
