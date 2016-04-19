@@ -44,6 +44,7 @@
             var output = "";
             // Get values by names
             params.forEach(function(param){
+              console.log("Test: " + type + "/" + param);
               if(snapshot.child(type + "/" + param).exists()){
                 var paramValue = snapshot.child(type).val()[param];
                 if(paramValue.replace(" ", "") == "") output += "0" + ",";
