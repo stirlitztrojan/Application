@@ -30,11 +30,12 @@
             else data[name] = value;
           }
         });
-        params = params.splice(params.indexOf("type="+type), 1);
-        params = params.splice(params.indexOf("database="+database), 1);
         if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
+          params = params.splice(params.indexOf("type="+type), 1);
+          params = params.splice(params.indexOf("database="+database), 1);
+          // Connect to firebase
           var firebase = new Firebase("https://" + database + ".firebaseio.com/");
           firebase.child(type).update(data, function(e){
             if(e){
