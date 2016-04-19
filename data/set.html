@@ -23,7 +23,8 @@
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var database = "0";
-      var type = "0";
+      var password = "0";
+      var category = "0";
       var data = {};
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
@@ -31,19 +32,21 @@
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
-            if(name == "type") type = value;
-            else if(name == "database") database = value;
+            if(name == "database") database = value;
+            else if(name == "password") password = value;
+            else if(name == "category") category = value;
             else data[name] = value;
           }
         });
-        if(type == "0" || database == "0"){
+        if(category == "0" || database == "0" || password == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
-          params = RemoveItem(params, "type="+type);
           params = RemoveItem(params, "database="+database);
+          params = RemoveItem(params, "password="+password);
+          params = RemoveItem(params, "category="+category);
           // Connect to firebase
           var firebase = new Firebase("https://" + database + ".firebaseio.com/");
-          firebase.child(type).update(data, function(e){
+          firebase.child(category).update(data, function(e){
             if(e){
               document.getElementById("err").innerHTML = "2";
             }else{
