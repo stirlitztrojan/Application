@@ -25,8 +25,14 @@
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
-            if(name == "type") type = value;
-            else data[name] = value;
+            if(name == "type"){
+              type = value;
+              params.splice(params.indexOf(name), 1);
+            }
+            if(name == "database"){
+              database = value;
+              params.splice(params.indexOf(name), 1);
+            }
           }
         });
         if(type == "0" || database == "0"){
