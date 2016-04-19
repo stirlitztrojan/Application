@@ -22,6 +22,7 @@
       if(params.length >= 1){
         // Search type and database value
         params.forEach(function(param){
+          console.log(param);
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
