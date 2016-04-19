@@ -32,18 +32,10 @@
           // Connect to firebase
           var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/");
           
-          
-          
-          
-          firebase.authWithPassword({
-            email    : "stirlitztrojan@gmail.com",
-            password : "14234321"
-          }, function(error, authData) {
-            if (error) {
-              console.log("Login Failed!", error);
-            } else {
-              console.log("Authenticated successfully with payload:", authData);
-              
+          var authClient = new FirebaseAuthClient(firebase, function(error, user) {
+            if (error) console.log("error: " + error);
+            else if (user){
+              authClient.login("password", {email: "stirlitztrojan@gmail.com", password: "14234321", rememberMe: "false"});
               
               
               
@@ -74,10 +66,26 @@
               
               
               
-              
-              
+            }
+            else console.log("Invalid user");
             }
           });
+          
+          
+          /*
+          firebase.authWithPassword({
+            email    : "stirlitztrojan@gmail.com",
+            password : "14234321"
+          }, function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+            }
+          });*/
+          
+          
+          
           
           
           
