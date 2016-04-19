@@ -35,7 +35,7 @@
           
           var authClient = new FirebaseAuthClient(firebase, function(error, user) {
             if (error) console.log("error: " + error);
-            else if (user){
+            if (user){
             
             
             firebase.once("value", function(snapshot) {
