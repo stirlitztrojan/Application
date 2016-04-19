@@ -43,12 +43,11 @@
               console.log("Login Failed!", error);
             } else {
               console.log("Authenticated successfully with payload:", authData);
-            }
-          });
-          
-          
-          
-          firebase.once("value", function(snapshot) {
+              
+              
+              
+              
+              firebase.once("value", function(snapshot) {
             var output = "";
             // Get values by names
             params.forEach(function(param){
@@ -70,8 +69,15 @@
           }, function (e) {
             document.getElementById("err").innerHTML = "2";
           });
-          
-          
+              
+              
+              
+              
+              
+              
+              
+            }
+          });
           
           
           
