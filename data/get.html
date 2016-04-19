@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>StirlitzTrojan Application</title>
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-    <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
   </head>
   <body>
     <div id="data"></div>
@@ -21,8 +20,9 @@
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         // Search type and database value
+        console.log("1: " + params);
         params.forEach(function(param){
-          console.log(param);
+          
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
@@ -30,12 +30,15 @@
             else if(name == "type") type = value;
           }
         });
+        console.log("2: " + params);
+        
         if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
+          console.log("3: " + params);
           params = params.splice(params.indexOf("type="+type), 1);
           params = params.splice(params.indexOf("database="+database), 1);
-          console.log(params);
+          console.log("4: " + params);
           // Connect to firebase
           var firebase = new Firebase("https://"+database+".firebaseio.com/");
           firebase.once("value", function(snapshot) {
