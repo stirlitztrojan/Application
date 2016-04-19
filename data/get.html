@@ -39,18 +39,8 @@
         if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
-          
-          
-          
-          console.log("params: " + params);
-          
           params = RemoveItem(params, "database="+database);
           params = RemoveItem(params, "type="+type);
-          
-          console.log("params: " + params);
-          
-          
-          
           // Connect to firebase
           var firebase = new Firebase("https://"+database+".firebaseio.com/");
           firebase.once("value", function(snapshot) {
