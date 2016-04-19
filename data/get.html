@@ -29,11 +29,12 @@
             else if(name == "type") type = value;
           }
         });
-        params = params.splice(params.indexOf("type="+type), 1);
-        params = params.splice(params.indexOf("database="+database), 1);
         if(type == "0" || database == "0"){
           document.getElementById("err").innerHTML = "4";
         }else{
+          params = params.splice(params.indexOf("type="+type), 1);
+          params = params.splice(params.indexOf("database="+database), 1);
+          console.log(params);
           // Connect to firebase
           var firebase = new Firebase("https://"+database+".firebaseio.com/");
           firebase.once("value", function(snapshot) {
