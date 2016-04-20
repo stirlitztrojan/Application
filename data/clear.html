@@ -38,7 +38,6 @@
           document.getElementById("err").innerHTML = "4";
         }else{
           params = RemoveItem(params, "password="+password);
-          params = RemoveItem(params, "category="+category);
           // Connect to firebase
           var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
           firebase.once("value", function(snapshot) {
