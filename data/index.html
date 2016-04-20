@@ -21,7 +21,7 @@
       color = "#cccccc";
       document.getElementById("data").appendChild(h1 = document.createElement("H1"));
       h1.innerHTML = "Users:";
-      var tableRow, tableCellComputer, tableCellUsername, tableCellIp;
+      var tableRow, tableCellComputer, tableCellUsername, tableCellIp, tableCellMac;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       tableRow = table.insertRow(0);
       tableRow.style.backgroundColor = color = (color == "#cccccc") ? "#aaaaaa" : "#cccccc";;
@@ -34,6 +34,9 @@
       tableCellIp = document.createElement("TH");
       tableCellIp.innerHTML = "IP";
       tableRow.appendChild(tableCellIp);
+      tableCellMac = document.createElement("TH");
+      tableCellMac.innerHTML = "MAC";
+      tableRow.appendChild(tableCellMac);
       rows = snapshot.val().user;
       for (var key in rows) {
         if (rows.hasOwnProperty(key)) {
@@ -42,7 +45,8 @@
           
           var computer =  name.split("&")[0];
           var username =  name.split("&")[1];
-          var ip =        ReplaceAll(name.split("&")[2], "-", ".");
+          var mac =       name.split("&")[2];
+          var ip =        ReplaceAll(name.split("&")[3], "-", ".");
           // New row:
           tableRow = table.insertRow(1);
           tableRow.style.backgroundColor = color = (color == "#cccccc") ? "#aaaaaa" : "#cccccc";;
@@ -55,6 +59,9 @@
           tableCellIp = tableRow.insertCell(2);
           tableCellIp.className = "nowrapword";
           tableCellIp.innerHTML = ip;
+          tableCellMac = tableRow.insertCell(3);
+          tableCellMac.className = "nowrapword";
+          tableCellMac.innerHTML = mac;
         }
       }
       
