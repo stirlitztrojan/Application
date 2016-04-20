@@ -18,12 +18,13 @@
     firebase.on("value", function(snapshot) {
       var h1, table, rows, color;
       
+      color = "#cccccc";
       document.getElementById("data").appendChild(h1 = document.createElement("H1"));
       h1.innerHTML = "Users:";
       var tableRow, tableCellComputer, tableCellUsername, tableCellIp;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       tableRow = table.insertRow(0);
-      tableRow.style.backgroundColor = "#aaaaaa";
+      tableRow.style.backgroundColor = color = (color == "#cccccc") ? "#aaaaaa" : "#cccccc";;
       tableCellComputer = document.createElement("TH");
       tableCellComputer.innerHTML = "Computer";
       tableRow.appendChild(tableCellComputer);
@@ -34,7 +35,6 @@
       tableCellIp.innerHTML = "IP";
       tableRow.appendChild(tableCellIp);
       rows = snapshot.val().user;
-      color = "#cccccc";
       for (var key in rows) {
         if (rows.hasOwnProperty(key)) {
           var name = key;
@@ -45,9 +45,7 @@
           var ip =        ReplaceAll(name.split("&")[2], "-", ".");
           // New row:
           tableRow = table.insertRow(1);
-          tableRow.style.backgroundColor = color;
-          if(color == "#cccccc") color = "#aaaaaa";
-          else color = "#cccccc";
+          tableRow.style.backgroundColor = color = (color == "#cccccc") ? "#aaaaaa" : "#cccccc";;
           tableCellComputer = tableRow.insertCell(0);
           tableCellComputer.className = "nowrapword";
           tableCellComputer.innerHTML = computer;
@@ -60,12 +58,13 @@
         }
       }
       
+      color = "#cccccc";
       document.getElementById("data").appendChild(h1 = document.createElement("H1"));
       h1.innerHTML = "Data:";
       var tableCellData, tableCellTime, tableCellDate;
       document.getElementById("data").appendChild(table = document.createElement("TABLE"));
       tableRow = table.insertRow(0);
-      tableRow.style.backgroundColor = "#aaaaaa";
+      tableRow.style.backgroundColor = color = (color == "#cccccc") ? "#aaaaaa" : "#cccccc";;
       tableCellComputer = document.createElement("TH");
       tableCellComputer.innerHTML = "Computer";
       tableRow.appendChild(tableCellComputer);
@@ -95,9 +94,7 @@
           var date = name.split(",")[1].split("&")[0];
           // New row:
           var tableRow = table.insertRow(1);
-          tableRow.style.backgroundColor = color;
-          if(color == "#cccccc") color = "#aaaaaa";
-          else color = "#cccccc";
+          tableRow.style.backgroundColor = color = (color == "#cccccc") ? "#aaaaaa" : "#cccccc";;
           var tableCellComputer = tableRow.insertCell(0);
           tableCellComputer.className = "nowrapword";
           tableCellComputer.innerHTML = computer;
