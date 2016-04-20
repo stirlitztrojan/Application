@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>StirlitzTrojan Application</title>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  </head>
+  <body>
+    <div id="data"></div>
+    <div id="err"></div>
+    <script>
+    <!--
+    window.onerror = function(message, source, lineno, colno, error){
+      document.getElementById("err").innerHTML = "1";
+    }
+    function RemoveItem(arr, value){
+      var i = arr.indexOf(value);
+      if(i != -1) {
+      	arr.splice(i, 1);
+      }
+      return arr;
+    }
+    var url = window.location.href;
+    if(url.indexOf("?") != -1){
+      var password = "0";
+      var username = "0";
+      var params = url.split("?")[1].split(";");
+      if(params.length >= 1){
+        params.forEach(function(param){
+          if(param.indexOf("=")!=-1){
+            var name = param.split("=")[0];
+            var value = param.split("=")[1];
+            if(name == "password") password = value;
+            else if(name == "category") category = value;
+          }
+        });
+        if(category == "0" || password == "0"){
+          document.getElementById("err").innerHTML = "4";
+        }else{
+          params = RemoveItem(params, "password="+password);
+          params = RemoveItem(params, "category="+category);
+          // Connect to firebase
+          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
+          firebase.once("value", function(snapshot) {
+            var output = "";
+            // Get values by names
+            params.forEach(function(param){
+              if(snapshot.child(category + "/" + param).exists()){
+                var paramValue = snapshot.child(category).val()[param];
+                if(paramValue.replace(" ", "") == "") output += "0" + ",";
+                else output += paramValue + ",";
+              }else{
+                document.getElementById("err").innerHTML = "5";
+              }
+            });
+            if(document.getElementById("err").innerHTML == ""){
+              output = output.substr(0, output.length-1); // Removing last ','
+              document.getElementById("data").innerHTML = output;
+              document.getElementById("err").innerHTML = "0";
+            }
+          }, function (e) {
+            console.log(e.code);
+            document.getElementById("err").innerHTML = "2";
+          });
+        }
+      }else{
+        document.getElementById("err").innerHTML = "3";
+      }
+    }else{
+      document.getElementById("err").innerHTML = "3";
+    }
+    -->
+    </script>
+  </body>
+</html>
