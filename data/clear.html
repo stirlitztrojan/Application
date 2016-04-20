@@ -40,23 +40,7 @@
           params = RemoveItem(params, "password="+password);
           // Connect to firebase
           var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
-          firebase.once("value", function(snapshot) {
-            params.forEach(function(param){
-              if(snapshot.child(category).exists()){
-                snapshot.child(category).set(null);
-              }else{
-                document.getElementById("err").innerHTML = "5";
-              }
-            });
-            if(document.getElementById("err").innerHTML == ""){
-              output = output.substr(0, output.length-1); // Removing last ','
-              document.getElementById("data").innerHTML = output;
-              document.getElementById("err").innerHTML = "0";
-            }
-          }, function (e) {
-            console.log(e.code);
-            document.getElementById("err").innerHTML = "2";
-          });
+          firebase.child(category).set(null);
         }
       }else{
         document.getElementById("err").innerHTML = "3";
