@@ -40,7 +40,15 @@
           params = RemoveItem(params, "password="+password);
           // Connect to firebase
           var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
-          firebase.child(category).set(null);
+          firebase.child(category).set(null, function(error) {
+            if (error) {
+              console.log(error);
+              document.getElementById("err").innerHTML = "2";
+            } else {
+              document.getElementById("data").innerHTML = "1";
+              document.getElementById("err").innerHTML = "0";
+            }
+          });
         }
       }else{
         document.getElementById("err").innerHTML = "3";
