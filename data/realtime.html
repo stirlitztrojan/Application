@@ -23,7 +23,7 @@
     var url = window.location.href;
     if(url.indexOf("?") != -1){
       var password = "0";
-      var username = "0";
+      var category = "0";
       var params = url.split("?")[1].split(";");
       if(params.length >= 1){
         params.forEach(function(param){
@@ -44,17 +44,15 @@
           firebase.once("value", function(snapshot) {
             var output = "";
             // Get values by names
-            params.forEach(function(param){
-              if(snapshot.child(category + "/" + param).exists()){
-                var paramValue = snapshot.child(category).val()[param];
-                if(paramValue.replace(" ", "") == "") output += "0" + ",";
-                else output += paramValue + ",";
-              }else{
-                document.getElementById("err").innerHTML = "5";
-              }
-            });
+            param = param[0];
+            if(snapshot.child(category + "/" + param).exists()){
+              var paramValue = snapshot.child(category).val()[param];
+              if(paramValue.replace(" ", "") == "") output += "0" + ",";
+              else output += paramValue + ",";
+            }else{
+              document.getElementById("err").innerHTML = "5";
+            }
             if(document.getElementById("err").innerHTML == ""){
-              output = output.substr(0, output.length-1); // Removing last ','
               document.getElementById("data").innerHTML = output;
               document.getElementById("err").innerHTML = "0";
             }
