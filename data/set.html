@@ -31,6 +31,8 @@
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
             var value = param.split("=")[1];
+            value = decodeURIComponent(value);
+            /*
             value = ReplaceAll(value, "%20", " ");
             value = ReplaceAll(value, "%3F", "?");
             value = ReplaceAll(value, "%2E", ".");
@@ -40,6 +42,7 @@
             value = ReplaceAll(value, "%2F", "/");
             value = ReplaceAll(value, "%5B", "[");
             value = ReplaceAll(value, "%5D", "]");
+            */
             if(name == "password") password = value;
             else if(name == "category") category = value;
             else data[name] = value;
