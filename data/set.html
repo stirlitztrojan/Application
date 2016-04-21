@@ -32,6 +32,8 @@
             var name = param.split("=")[0];
             var value = param.split("=")[1];
             value = ReplaceAll(value, "%20", " ");
+            value = ReplaceAll(value, "%21", "!");
+            value = ReplaceAll(value, "%2E", ".");
             value = ReplaceAll(value, "%3F", "?");
             if(name == "password") password = value;
             else if(name == "category") category = value;
