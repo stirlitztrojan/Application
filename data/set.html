@@ -30,7 +30,9 @@
         params.forEach(function(param){
           if(param.indexOf("=")!=-1){
             var name = param.split("=")[0];
-            var value = ReplaceAll(param.split("=")[1], "%20", " ");
+            var value = param.split("=")[1];
+            value = ReplaceAll(value, "%20", " ");
+            value = ReplaceAll(value, "%3F", "?");
             if(name == "password") password = value;
             else if(name == "category") category = value;
             else data[name] = value;
