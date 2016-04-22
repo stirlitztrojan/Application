@@ -4,79 +4,54 @@
     <meta charset="UTF-8">
     <title>StirlitzTrojan Application</title>
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-  </head>
-  <body>
-    <div id="data"></div>
-    <div id="err"></div>
-    <script>
-    <!--
-    window.onerror = function(message, source, lineno, colno, error){
-      document.getElementById("err").innerHTML = "1";
-    }
-    function RemoveItem(arr, value){
-      var i = arr.indexOf(value);
-      if(i != -1) {
-      	arr.splice(i, 1);
-      }
-      return arr;
-    }
-    var url = window.location.href;
-    if(url.indexOf("?") != -1){
-      var password = "0";
-      var category = "0";
-      var data = {};
-      var params = url.split("?")[1].split(";");
-      if(params.length >= 1){
-        params.forEach(function(param){
-          if(param.indexOf("=")!=-1){
-            var name = param.split("=")[0];
-            var value = param.split("=")[1];
-            value = decodeURIComponent(value);
-            /*
-            value = ReplaceAll(value, "%20", " ");
-            value = ReplaceAll(value, "%3F", "?");
-            value = ReplaceAll(value, "%2E", ".");
-            value = ReplaceAll(value, "%21", "!");
-            value = ReplaceAll(value, "%23", "#");
-            value = ReplaceAll(value, "%24", "$");
-            value = ReplaceAll(value, "%2F", "/");
-            value = ReplaceAll(value, "%5B", "[");
-            value = ReplaceAll(value, "%5D", "]");
-            */
-            if(name == "password") password = value;
-            else if(name == "category") category = value;
-            else data[name] = value;
+		<script>
+	    <!--
+		function Error(code, text){
+			document.getElementById("output").innerHTML = "";
+			document.getElementById("errCode").innerHTML = code;
+			document.getElementById("errText").innerHTML = text;
+		}
+		function Output(data){
+			document.getElementById("output").innerHTML = data;
+			document.getElementById("errCode").innerHTML = "";
+			document.getElementById("errText").innerHTML = "";
+		}
+		function Submit(){
+			var password, category, dataname;
+			var data = {};
+			password = document.getElementById("password").value;
+			category = document.getElementById("category").value;
+			dataname = document.getElementById("dataname").value;
+			datatext = document.getElementById("datatext").value;
+			if(password && category && dataname && datatext){
+			  var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
+			  data[dataname] = datatext;
+        firebase.child(category).update(data}, function(e){
+          if(e){
+            Error("2", "Invalid dataname");
+          }else{
+            Output("1");
           }
         });
-        if(category == "0" || password == "0"){
-          document.getElementById("err").innerHTML = "4";
-        }else{
-          params = RemoveItem(params, "password="+password);
-          params = RemoveItem(params, "category="+category);
-          // Connect to firebase
-          var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
-          firebase.child(category).update(data, function(e){
-            if(e){
-              document.getElementById("err").innerHTML = "2";
-            }else{
-              document.getElementById("data").innerHTML = "1";
-              document.getElementById("err").innerHTML = "0";
-            }
-          });
-        }
-      }else{
-        document.getElementById("err").innerHTML = "3";
-      }
-    }else{
-      document.getElementById("err").innerHTML = "3";
-    }
-    function EscapeRegExp(str) {
-      return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-    }
-    function ReplaceAll(str, search, replacement){
-      return str.replace(new RegExp(EscapeRegExp(search), 'g'), replacement);
-    }
-    -->
+			}else{
+				Error("3", "Invalid password or category or dataname");
+			}
+		}
+	  -->
     </script>
+  </head>
+  <body>
+		<h1>Input:</h1>
+		<form>
+			<code>Password: </code><input id="password" type="password" /><br/>
+			<code>Category: </code><input id="category" type="text" /><br/>
+			<code>Dataname: </code><input id="dataname" type="text" /><br/>
+			<code>Datatext: </code><input id="datatext" type="text" /><br/>
+			<input id="submit" type="button" onclick="Submit()" value="Get" />
+		</form> 
+		<h1>Output:</h1>
+		<div id="output"></div>
+		<div id="errCode"></div>
+		<div id="errText"></div>
   </body>
 </html>
