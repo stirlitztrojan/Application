@@ -14,11 +14,14 @@
 	      return arr;
 	    }
 		function Error(code, text){
+			document.getElementById("output").innerHTML = "";
 			document.getElementById("errCode").innerHTML = code;
 			document.getElementById("errText").innerHTML = text;
 		}
 		function Output(data){
 			document.getElementById("output").innerHTML = data;
+			document.getElementById("errCode").innerHTML = "";
+			document.getElementById("errText").innerHTML = "";
 		}
 		function Submit(){
 			var password, category, dataname;
