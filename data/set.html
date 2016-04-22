@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>StirlitzTrojan Application</title>
-    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>StirlitzTrojan Application</title>
+		<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 		<script>
-	    <!--
+		<!--
 		function Error(code, text){
 			document.getElementById("output").innerHTML = "";
 			document.getElementById("errCode").innerHTML = code;
@@ -24,23 +24,23 @@
 			dataname = document.getElementById("dataname").value;
 			datatext = document.getElementById("datatext").value;
 			if(password && category && dataname && datatext){
-			  var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
-			  data[dataname] = datatext;
-        firebase.child(category).update(data}, function(e){
-          if(e){
-            Error("2", "Invalid dataname");
-          }else{
-            Output("1");
-          }
-        });
+				var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
+				data[dataname] = datatext;
+				firebase.child(category).update(data, function(e){
+					if(e){
+						Error("2", "Invalid dataname");
+					}else{
+						Output("1");
+					}
+				});
 			}else{
 				Error("3", "Invalid password or category or dataname");
 			}
 		}
-	  -->
-    </script>
-  </head>
-  <body>
+		-->
+		</script>
+	</head>
+	<body>
 		<h1>Input:</h1>
 		<form>
 			<code>Password: </code><input id="password" type="password" /><br/>
@@ -53,5 +53,5 @@
 		<div id="output"></div>
 		<div id="errCode"></div>
 		<div id="errText"></div>
-  </body>
+	</body>
 </html>
