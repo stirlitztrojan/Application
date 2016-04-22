@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>StirlitzTrojan Application</title>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<script>
+    <!--
+    function RemoveItem(arr, value){
+      var i = arr.indexOf(value);
+      if(i != -1) {
+      	arr.splice(i, 1);
+      }
+      return arr;
+    }
+	function Error(code, text){
+		document.getElementById("errCode").innerHTML = code;
+		document.getElementById("errText").innerHTML = text;
+	}
+	function Output(data){
+		document.getElementById("output").innerHTML = data;
+	}
+	function Submit(){
+		var password, category, dataname;
+		password = document.getElementById("password").value;
+		category = document.getElementById("category").value;
+		dataname = document.getElementById("dataname").value;
+		if(password && category && dataname){
+			var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
+			firebase.once("value", function(snapshot) {
+				if(snapshot.child(category + "/" + dataname).exists()){
+					var datavalue = snapshot.child(category).val()[dataname];
+					Output(datavalue);
+				}else{
+					Error("2", "Invalid database child");
+				}
+			}, function (e) {
+				Error("2", e.code);
+			});
+		}else{
+			Error("3", "Invalid password or category or dataname");
+		}
+	}
+    -->
+    </script>
+  </head>
+  <body>
+	<h1>Input:</h1>
+	<form>
+		<code>Password:</code><input id="password" type="password" value="14234321" /><br/>
+		<code>Category:</code><input id="category" type="text" value="user" /><br/>
+		<code>Dataname:</code><input id="dataname" type="text" value="aaa" /><br/>
+		<input type="button" onclick="Submit()" value="Get" />
+	</form>
+	<h1>Output:</h1>
+	<div id="output">
+	<div id="errCode">
+	<div id="errText">
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
