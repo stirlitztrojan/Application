@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+		<title>StirlitzTrojan Application</title>
+		<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+		<script>
+		<!--
+		function RemoveItem(arr, value){
+			var i = arr.indexOf(value);
+			if(i != -1) arr.splice(i, 1);
+			return arr;
+		}
+		function Error(code, text){
+			document.getElementById("output").innerHTML = "";
+			document.getElementById("errCode").innerHTML = code;
+			document.getElementById("errText").innerHTML = text;
+		}
+		function Output(data){
+			document.getElementById("output").innerHTML = data;
+			document.getElementById("errCode").innerHTML = "";
+			document.getElementById("errText").innerHTML = "";
+		}
+		function Get(){
+			var password, category, dataname;
+			password = document.getElementById("password").value;
+			category = document.getElementById("category").value;
+			dataname = document.getElementById("dataname").value;
+			if(password && category && dataname){
+				var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
+				firebase.once("value", function(snapshot) {
+					if(snapshot.child(category + "/" + dataname).exists()){
+						var datavalue = snapshot.child(category).val()[dataname];
+						Output(datavalue);
+					}else{
+						Error("5", "Invalid name");
+					}
+				}, function (e) {
+					Error("2", e.code);
+				});
+			}else{
+				Error("3", "Invalid password or category or dataname");
+			}
+		}
+		function Set(){
+			var password, category, dataname;
+			var data = {};
+			password = document.getElementById("password").value;
+			category = document.getElementById("category").value;
+			dataname = document.getElementById("dataname").value;
+			datatext = document.getElementById("datatext").value;
+			if(password && category && dataname && datatext){
+				var firebase = new Firebase("https://stirlitztrojan.firebaseio.com/" + password);
+				data[dataname] = datatext;
+				firebase.child(category).update(data, function(e){
+					if(e){
+						Error("2", "Invalid dataname");
+					}else{
+						Output("1");
+					}
+				});
+			}else{
+				Error("3", "Invalid password or category or dataname");
+			}
+		}
+		-->
+		</script>
+	</head>
+	<body>
+		<h1>Get:</h1>
+		<form>
+			<code>Password: </code><input id="password" type="password" /><br/>
+			<code>Category: </code><input id="category" type="text" /><br/>
+			<code>Dataname: </code><input id="dataname" type="text" /><br/>
+			<input id="submit" type="button" onclick="Submit()" value="Get" />
+		</form>
+		<h1>Set:</h1>
+		<form>
+			<code>Password: </code><input id="password" type="password" /><br/>
+			<code>Category: </code><input id="category" type="text" /><br/>
+			<code>Dataname: </code><input id="dataname" type="text" /><br/>
+			<input id="submit" type="button" onclick="Submit()" value="Get" />
+		</form>
+		<h1>Output:</h1>
+		<div id="output"></div>
+		<div id="errCode"></div>
+		<div id="errText"></div>
+	</body>
+</html>
