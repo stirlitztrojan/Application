@@ -63,7 +63,7 @@
 			<code>Password: </code><input name="password" type="password" /><br/>
 			<code>Category: </code><input name="category" type="text" /><br/>
 			<code>Dataname: </code><input name="dataname" type="text" /><br/>
-			<input id="submit" type="button" onclick="alert(this.parentElement.password.value)" value="Get" />
+			<input id="submit" type="button" onclick="Get(this.parentElement.password.value, this.parentElement.category.value, this.parentElement.dataname.value)" value="Get" />
 		</form>
 		<h1>Set:</h1>
 		<form>
@@ -71,7 +71,7 @@
 			<code>Category: </code><input name="category" type="text" /><br/>
 			<code>Dataname: </code><input name="dataname" type="text" /><br/>
 			<code>Datatext: </code><input name="datatext" type="text" /><br/>
-			<input id="submit" type="button" onclick="Set()" value="Get" />
+			<input id="submit" type="button" onclick="Set(this.parentElement.password.value, this.parentElement.category.value, this.parentElement.dataname.value, this.parentElement.datatext.value)" value="Get" />
 		</form>
 		<h1>Output:</h1>
 		<div id="output"></div>
