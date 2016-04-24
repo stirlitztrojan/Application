@@ -11,15 +11,53 @@
 			if(i != -1) arr.splice(i, 1);
 			return arr;
 		}
-		function Error(code, text){
-			document.getElementById("output").innerHTML = "";
-			document.getElementById("errCode").innerHTML = code;
-			document.getElementById("errText").innerHTML = text;
+		function Error(category, code, text){
+			// element error code
+			if(document.getElementById(category + "_code")==null){
+				var el = document.createElement("DIV");
+				el.id = category + "_code";
+				el.innerHTML = code;
+				document.getElementById("output").appendChild(el);
+			}else{
+				var el = document.getElementById(category + "_code");
+				el.innerHTML = code;
+			}
+			// element error text
+			if(document.getElementById(category + "_text")==null){
+				var el = document.createElement("DIV");
+				el.id = category + "_text";
+				el.innerHTML = text;
+				document.getElementById("output").appendChild(el);
+			}else{
+				var el = document.getElementById(category + "_text");
+				el.innerHTML = text;
+			}
+			// element data
+			document.getElementById(category + "_data").innerHTML = "";
 		}
-		function Output(data){
-			document.getElementById("output").innerHTML = data;
-			document.getElementById("errCode").innerHTML = "";
-			document.getElementById("errText").innerHTML = "";
+		function Output(category, data){
+			// element error code
+			if(document.getElementById(category + "_code")==null){
+				var el = document.createElement("DIV");
+				el.id = category + "_code";
+				el.innerHTML = "";
+				document.getElementById("output").appendChild(el);
+			}else{
+				var el = document.getElementById(category + "_code");
+				el.innerHTML = "";
+			}
+			// element error text
+			if(document.getElementById(category + "_text")==null){
+				var el = document.createElement("DIV");
+				el.id = category + "_text";
+				el.innerHTML = "";
+				document.getElementById("output").appendChild(el);
+			}else{
+				var el = document.getElementById(category + "_text");
+				el.innerHTML = "";
+			}
+			// element data
+			document.getElementById(category + "_data").innerHTML = data;
 		}
 		function Get(password, category, dataname){
 			if(password && category && dataname){
@@ -27,15 +65,15 @@
 				firebase.once("value", function(snapshot) {
 					if(snapshot.child(category + "/" + dataname).exists()){
 						var datavalue = snapshot.child(category).val()[dataname];
-						Output(datavalue);
+						Output(category, datavalue);
 					}else{
-						Error("5", "Invalid name");
+						Error(category, "5", "Invalid name");
 					}
 				}, function (e) {
-					Error("2", e.code);
+					Error(category, "2", e.code);
 				});
 			}else{
-				Error("3", "Invalid password or category or dataname");
+				Error(category, "3", "Invalid password or category or dataname");
 			}
 		}
 		function Set(password, category, dataname, datatext){
@@ -45,13 +83,13 @@
 				data[dataname] = datatext;
 				firebase.child(category).update(data, function(e){
 					if(e){
-						Error("2", "Invalid dataname");
+						Error(category, "2", "Invalid dataname");
 					}else{
-						Output("1");
+						Output(category, "1");
 					}
 				});
 			}else{
-				Error("3", "Invalid password or category or dataname");
+				Error(category, "3", "Invalid password or category or dataname");
 			}
 		}
 		-->
@@ -75,8 +113,5 @@
 		</form>
 		<h1>Output:</h1>
 		<div id="output"></div>
-		<div id="errCode"></div>
-		<div id="errText"></div>
-		<buttom id="testy" onclick="window.external.Callback('TestyTestyTesty');">Test</button>
 	</body>
 </html>
