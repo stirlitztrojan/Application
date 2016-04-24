@@ -33,7 +33,15 @@
 				el.innerHTML = text;
 			}
 			// element data
-			document.getElementById(category + "_data").innerHTML = "";
+			if(document.getElementById(category + "_data")==null){
+				var el = document.createElement("DIV");
+				el.id = category + "_data";
+				el.innerHTML = "";
+				document.getElementById("output").appendChild(el);
+			}else{
+				var el = document.getElementById(category + "_data");
+				el.innerHTML = "";
+			}
 		}
 		function Output(category, data){
 			// element error code
@@ -57,7 +65,15 @@
 				el.innerHTML = "";
 			}
 			// element data
-			document.getElementById(category + "_data").innerHTML = data;
+			if(document.getElementById(category + "_data")==null){
+				var el = document.createElement("DIV");
+				el.id = category + "_data";
+				el.innerHTML = data;
+				document.getElementById("output").appendChild(el);
+			}else{
+				var el = document.getElementById(category + "_data");
+				el.innerHTML = data;
+			}
 		}
 		function Get(password, category, dataname){
 			if(password && category && dataname){
