@@ -13,23 +13,23 @@
 		}
 		function Error(category, code, text){
 			// element error code
-			if(document.getElementById(category + "_code")==null){
+			if(document.getElementById(category + "_errCode")==null){
 				var el = document.createElement("DIV");
-				el.id = category + "_code";
+				el.id = category + "_errCode";
 				el.innerHTML = code;
 				document.getElementById("output").appendChild(el);
 			}else{
-				var el = document.getElementById(category + "_code");
+				var el = document.getElementById(category + "_errCode");
 				el.innerHTML = code;
 			}
 			// element error text
-			if(document.getElementById(category + "_text")==null){
+			if(document.getElementById(category + "_errText")==null){
 				var el = document.createElement("DIV");
-				el.id = category + "_text";
+				el.id = category + "_errText";
 				el.innerHTML = text;
 				document.getElementById("output").appendChild(el);
 			}else{
-				var el = document.getElementById(category + "_text");
+				var el = document.getElementById(category + "_errText");
 				el.innerHTML = text;
 			}
 			// element data
@@ -45,23 +45,23 @@
 		}
 		function Output(category, data){
 			// element error code
-			if(document.getElementById(category + "_code")==null){
+			if(document.getElementById(category + "_errCode")==null){
 				var el = document.createElement("DIV");
-				el.id = category + "_code";
+				el.id = category + "_errCode";
 				el.innerHTML = "";
 				document.getElementById("output").appendChild(el);
 			}else{
-				var el = document.getElementById(category + "_code");
+				var el = document.getElementById(category + "_errCode");
 				el.innerHTML = "";
 			}
 			// element error text
-			if(document.getElementById(category + "_text")==null){
+			if(document.getElementById(category + "_errText")==null){
 				var el = document.createElement("DIV");
-				el.id = category + "_text";
+				el.id = category + "_errText";
 				el.innerHTML = "";
 				document.getElementById("output").appendChild(el);
 			}else{
-				var el = document.getElementById(category + "_text");
+				var el = document.getElementById(category + "_errText");
 				el.innerHTML = "";
 			}
 			// element data
