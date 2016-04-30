@@ -1,0 +1,26 @@
+
+collation = utf8_unicode_ci
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+=================================== info
+name			VARCHAR(20)
+value			VARCHAR(50)
+=================================== user
+userid			VARCHAR(20)
+computer		VARCHAR(20)
+username		VARCHAR(20)
+info			TEXT
+status			TEXT
+error			TEXT
+input			TEXT
+output			TEXT
+=================================== data
+userid			VARCHAR(20)
+data			LONGBLOB
+time			DATETIME
+=================================== file
+userid			VARCHAR(20)
+path			TEXT
+data			LONGBLOB
